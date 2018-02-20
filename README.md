@@ -8,10 +8,15 @@ other information that should be provided before the tool is installed.
 INSTALLATION
 
 To install this tool type the following:
+
     cp user_defined_functions  ~/.user_defined_functions
+    
     cp bash_aliases            ~/.bash_aliases
+    
     cp bash_logout             ~/.bash_logout
+    
     cp bashrc                  ~/.bashrc
+    
     cp profile                 ~/.profile
 
 DEPENDENCIES
