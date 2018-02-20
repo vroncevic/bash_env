@@ -30,7 +30,7 @@ Copyright (C) 2018 by https://vroncevic.github.io/bash_env
 This tool is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
 at your option, any later version of Bash 4 you may have available.
-
+```
              `:ooo+ooo-                                                                             
           ./so:`     `/oo/`                                                                         
        -os+-             -os+. 
@@ -52,4 +52,4 @@ os`              `mNNNNd.sNNdhymNNNm/     ````````       ``        ```      `...
        ./oo:`    `mNNNNNNNmy/` 
           `:oo/. `mNNNNdo-                                                                          
               .+ooydy+.                                                                             
-
+```
