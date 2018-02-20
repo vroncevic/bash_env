@@ -1,0 +1,265 @@
+#
+# @brief   User defined functions
+# @version ver.1.0
+# @date    Tue Feb 20 20:02:40 CET 2018
+# @company None, free software to use 2018
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
+# Destroy VNC session (provide display port number)
+function __vnc_kill {
+    local number_of_arguments=$# vncserver_path=$(which vncserver)
+    local display_number=$1
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: vnc_kill <DISPLAY_NUMBER>"
+        return 127
+    fi
+    if [[ ! -e $vncserver_path ]]; then
+        printf "%s\n" "Check executable vncserver"
+        return 128
+    fi
+    eval "${vncserver_path} -kill :${display_number}"
+    return 0
+}
+
+# Checking listen port
+function __listen_port {
+    local number_of_arguments=$# netstat_path=$(which netstat) port_number=$1
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: listen_port <PORT_NUMBER>"
+        return 127
+    fi
+    if [[ ! -e $netstat_path ]]; then
+        printf "%s\n" "Check executable netstat"
+        return 128
+    fi
+    eval "$netstat_path -lpdn | grep ${port_number}"
+    return 0
+}
+
+# List process details by name
+function __list_processes {
+    local number_of_arguments=$# app_name=$1
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: list_processes <APP_NAME>"
+        return 127
+    fi
+    ps ax | grep ${app_name}
+    return 0
+}
+
+# Create + move work directory
+function __mkdircd {
+    local number_of_arguments=$# dir_path=$1
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: mkdircd <directory_path>"
+        return 127
+    fi
+    mkdir "${dir_path}/"
+    cd "${dir_path}/"
+}
+
+# List files and directories by size
+function __osize {
+    local number_of_arguments=$# target_path=$1 max_size=$2
+    if [[ $number_of_arguments -ne 2 ]]; then
+        printf "%s\n" "Usage: osize <PATH> <SIZE_MAX>"
+        return 127
+    fi
+    if [[ ! -e $target_path ]]; then
+        printf "%s\n" "Check path [${target_path}]"
+        return 128
+    fi
+    find $target_path -type f -size $max_size
+    return 0
+}
+
+# List files that are not modified in the last days
+function __last_modified {
+    local number_of_arguments=$# target_path=$1 last_days=$2
+    if [[ $number_of_arguments -ne 2 ]]; then
+        printf "%s\n" "Usage: flast <PATH> <LAST_DAYS>"
+        return 127
+    fi
+    if [[ ! -e $target_path ]]; then
+        printf "%s\n" "Check path [${target_path}]"
+        return 128
+    fi
+    find $target_path -mtime $last_days
+    return 0
+}
+
+# List files by name and size
+function __list_file_size {
+    local number_of_arguments=$# target_path=$1 fname=$2 size=$3
+    if [[ $number_of_arguments -ne 3 ]]; then
+        echo "Usage: flist <PATH> <FILENAME> <SIZE>"
+        return 127
+    fi
+    if [[ ! -e $target_path ]]; then
+        printf "%s\n" "Check path [${target_path}]"
+        return 128
+    fi
+    find $target_path -type f -name $fname -size $size -exec ls -l {}\;
+    return 0
+}
+
+# Remove files by name and size
+function __rmf {
+    local number_of_arguments=$# target_path=$1 fname=$2 size=$3
+    if [[ $number_of_arguments -ne 3 ]]; then
+        echo "Usage: rmf <PATH> <FILENAME> <SIZE>"
+        return 127
+    fi
+    if [[ ! -e $target_path ]]; then
+        printf "%s\n" "Check path [${target_path}]"
+        return 128
+    fi
+    find $target_path -type f -name $fname -size $size -exec rm -f {}\;
+    return 0
+}
+
+# Archiving files: *.tar
+function __arch_tar {
+    local number_of_arguments=$# path=$1 filename=$2
+    if [[ $number_of_arguments -ne 2 ]]; then
+        printf "%s\n" "Usage: __arch_tar <PATH> <FILENAME>"
+        return 127
+    fi
+    if [[ ! -e $path ]]; then
+        printf "%s\n" "Check path [${path}]"
+        return 128
+    fi
+    find_pipe="find $path -type f -name $filename"
+    xargs_pipe="xargs tar -cvf $path/$filename`date '+%d%m%Y'_archive.tar`"
+    eval "${find_pipe} | ${xargs_pipe}"
+    return 0
+}
+
+# Archiving files: *.tar.gz
+function __arch_tar_gz {
+    local number_of_arguments=$# path=$1 filename=$2 arch=$3
+    if [[ $number_of_arguments -ne 3 ]]; then
+        printf "%s\n" "Usage: __arch_tar_gz <PATH> <FILENAME> <ARCHIVE_NAME>"
+        return 127
+    fi
+    if [[ ! -e $path ]]; then
+        printf "%s\n" "Check path [${path}]"
+        return 128
+    fi
+    find_pipe="find $path -name $filename -type f -print"
+    xargs_pipe="xargs tar -cvzf ${arch}.tar.gz"
+    eval "${find_pipe} | ${xargs_pipe}"
+    return 0
+}
+
+# Count duplicates
+function __csort {
+    local number_of_arguments=$# path=$1
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: csort <PATH>"
+        return 127
+    fi
+    if [[ ! -e $path ]]; then
+        printf "%s\n" "Check path [${path}]"
+        return 128
+    fi
+    sort $path | uniq –c
+    return 0
+}
+
+# Display n-st field from a column delimited file
+function __cutcol {
+    local number_of_arguments=$# columns=$1 filename=$2
+    if [[ $number_of_arguments -ne 2 ]]; then
+        printf "%s\n" "Usage: cutcol <column>, ..., <column> <filename>"
+        printf "%s\n" "Example: cutcol 1,3,5 file.ini"
+        return 127
+    fi
+    if [[ ! -e $filename ]]; then
+        printf "%s\n" "Check file [${filename}]"
+        return 128
+    fi
+    cut -d: -f $columns $filename
+    return 0
+}
+
+# Diplay characters of every line in a file
+function __cutchars {
+    local number_of_arguments=$# chars=$1 filename=$2
+    if [[ $number_of_arguments -ne 2 ]]; then
+        printf "%s\n" "Usage: cutchars <column>-<column> <filename>"
+        printf "%s\n" "Example: cutchars 1-8 test.txt"
+        return 127
+    fi
+    if [[ ! -e $filename ]]; then
+        printf "%s\n" "Check file [${filename}]"
+        return 128
+    fi
+    cut -c $chars $filename
+    return 0
+}
+
+# Connect time for a specific user
+function __acd {
+    local number_of_arguments=$# username=$1 ac_path=$(which ac)
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: ulist <username>"
+        return 127
+    fi
+    if [[ ! -e $ac_path ]]; then
+        printf "%s\n" "Check tool ac"
+        return 128
+    fi
+    eval "${ac_path} -d ${username}"
+    return 0
+}
+
+# Check perl module info
+function __check_perl_module {
+    local num_of_args=$# perl_module=$1 cpan_path=$(which cpan)
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: chpmod <perl-module>"
+        return 127
+    fi
+    if [[ ! -e $cpan_path ]]; then
+        printf "%s\n" "Check tool cpan"
+        return 128
+    fi
+    eval "${cpan_path} -D ${perl_module}"
+    return 0
+}
+
+# Kill all process for user
+function __kill_all {
+    local number_of_arguments=$# username=$1
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: ukill <username>"
+        return 127
+    fi
+    ps -ef | grep $username | awk '{ print $2 }' | xargs kill -9
+    return 0
+}
+
+# Set java
+function __set_java {
+    local number_of_arguments=$# java_exec=$1
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: java_set <PATH>"
+        return 127
+    fi
+    if [[ ! -e $java_exec ]];then
+        printf "%s\n" "Check executable file (~/bin/java): ${java_exec}"
+        return 128
+    fi
+    update-alternatives --install /usr/bin/java java $java_exec 1
+    return 0
+}
+
+# Wipe python cache files
+function __pyclean {
+    find . -type f -name "*.py[co]" -delete
+    find . -type d -name "__pycache__" -delete
+    return 0
+}
+
