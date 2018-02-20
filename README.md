@@ -25,7 +25,7 @@ This tool requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2018 by https://github.com/vroncevic/bash_env
+Copyright (C) 2018 by https://vroncevic.github.io/bash_env
 
 This tool is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
