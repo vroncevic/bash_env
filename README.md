@@ -4,7 +4,7 @@ The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-##INSTALLATION
+## INSTALLATION
 
 To install this tool type the following:
 
@@ -16,12 +16,12 @@ To install this tool type the following:
     cp profile                 ~/.profile
 ```
 
-##DEPENDENCIES
+## DEPENDENCIES
 
 This tool requires these other modules and libraries:
     None
 
-##COPYRIGHT AND LICENCE
+## COPYRIGHT AND LICENCE
 
 Copyright (C) 2018 by https://vroncevic.github.io/bash_env
 
