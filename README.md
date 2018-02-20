@@ -19,7 +19,8 @@ To install this tool type the following:
 ## DEPENDENCIES
 
 This tool requires these other modules and libraries:
-    None
+
+    * None
 
 ## COPYRIGHT AND LICENCE
 
