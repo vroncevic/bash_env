@@ -263,3 +263,14 @@ function __pyclean {
     return 0
 }
 
+# Generate Intel Hex file from elf
+function __gen_hex {
+    local number_of_arguments=$# elf_file=$1 hex_file=$2
+    if [[ $number_of_arguments -ne 2 ]]; then
+        printf "%s\n" "Usage: gen_hex <ELF-FILE> <HEX-FILE>"
+        return 127
+    fi
+    avr-objcopy -O ihex $elf_file $hex_file
+    return 0
+}
+

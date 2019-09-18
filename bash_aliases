@@ -43,4 +43,5 @@ alias java_set="__set_java $1"
 alias java_update="update-alternatives --config java"
 alias vnc_kill="__vnc_kill $1"
 alias pyclean="__pyclean"
+alias gen_hex="__gen_hex $1 $2"
 
