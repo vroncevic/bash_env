@@ -11,7 +11,7 @@ other information that should be provided before the tool is installed.
 
 Navigate to release [page](https://github.com/vroncevic/bash_env/releases) download and extract release archive.
 
-To install this tool type the following:
+To install bash_env type the following:
 ```
 cp user_defined_functions  ~/.user_defined_functions
 cp bash_aliases            ~/.bash_aliases
@@ -22,7 +22,7 @@ cp profile                 ~/.profile
 
 ### DEPENDENCIES
 
-This tool requires these other modules and libraries:
+bash_env requires next modules and libraries:
 
     * None
 
@@ -31,20 +31,16 @@ This tool requires these other modules and libraries:
 [![Documentation Status](https://readthedocs.org/projects/bash_env/badge/?version=latest)](https://bash_env.readthedocs.io/projects/bash_env/en/latest/?badge=latest)
 
 More documentation and info at:
-
-* https://bash_env.readthedocs.io/en/latest/
-
-:sparkles:
+* [https://bash_env.readthedocs.io/en/latest/](https://bash_env.readthedocs.io/en/latest/)
+* [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 
 ### COPYRIGHT AND LICENCE
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2018 by https://vroncevic.github.io/bash_env
+Copyright (C) 2018 by [vroncevic.github.io/bash_env](https://vroncevic.github.io/bash_env)
 
 This tool is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
 at your option, any later version of Bash 4 you may have available.
-
-:sparkles:
 
