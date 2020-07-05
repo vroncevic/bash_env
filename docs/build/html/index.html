@@ -33,7 +33,7 @@
 <h1>BASH_ENV<a class="headerlink" href="#bash-env" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p><strong>bash_env</strong> is startup env for bash user.</p>
+<p><strong>bash_env</strong> is startup env for bash/emacs user.</p>
 <p>Developed in <a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">bash</a> code: <strong>100%</strong>.</p>
 <p>The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
@@ -65,11 +65,13 @@ cp profile                 ~/.profile
 <h1>SHELL TOOL STRUCTURE<a class="headerlink" href="#shell-tool-structure" title="Permalink to this headline">¶</a></h1>
 <p><strong>bash_env</strong> is based on bash.</p>
 <p>Code structure:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp user_defined_functions  ~/.user_defined_functions
-cp bash_aliases            ~/.bash_aliases
-cp bash_logout             ~/.bash_logout
-cp bashrc                  ~/.bashrc
-cp profile                 ~/.profile
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp user_defined_functions     /home/&lt;username&gt;/.user_defined_functions
+cp bash_aliases               /home/&lt;username&gt;/.bash_aliases
+cp bash_logout                /home/&lt;username&gt;/.bash_logout
+cp bashrc                     /home/&lt;username&gt;/.bashrc
+cp profile                    /home/&lt;username&gt;/.profile
+cp emacs                      /home/&lt;username&gt;/.emacs
+cp fill-column-indicator.el   /home/&lt;username&gt;/.emacs.d/lisp/
 </pre></div>
 </div>
 </div>

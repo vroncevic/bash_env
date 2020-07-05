@@ -6,7 +6,7 @@ BASH_ENV
 
  self
 
-**bash_env** is startup env for bash user.
+**bash_env** is startup env for bash/emacs user.
 
 Developed in `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_ code: **100%**.
 
@@ -59,12 +59,14 @@ Code structure:
 
 .. code-block:: bash
 
-   cp user_defined_functions  ~/.user_defined_functions
-   cp bash_aliases            ~/.bash_aliases
-   cp bash_logout             ~/.bash_logout
-   cp bashrc                  ~/.bashrc
-   cp profile                 ~/.profile
-
+   cp user_defined_functions     /home/<username>/.user_defined_functions
+   cp bash_aliases               /home/<username>/.bash_aliases
+   cp bash_logout                /home/<username>/.bash_logout
+   cp bashrc                     /home/<username>/.bashrc
+   cp profile                    /home/<username>/.profile
+   cp emacs                      /home/<username>/.emacs
+   cp fill-column-indicator.el   /home/<username>/.emacs.d/lisp/
+   
 COPYRIGHT AND LICENCE
 ----------------------
 
