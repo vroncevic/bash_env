@@ -36,5 +36,13 @@
 (setq fci-rule-column 79)
 (add-hook 'after-change-major-mode-hook 'fci-mode)
 (setq make-backup-files nil)
-
-
+(setq frame-title-format
+    '("" invocation-name ": "
+        (:eval
+            (if buffer-file-name
+                 (abbreviate-file-name buffer-file-name)
+             "%b"
+	    )
+	)
+    )
+)

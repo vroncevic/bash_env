@@ -1,4 +1,4 @@
-# bash_env (Linux BASH Environment files)
+# bash_env (Linux BASH/Emacs Environment files)
 
 The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
@@ -13,11 +13,13 @@ Navigate to release [page](https://github.com/vroncevic/bash_env/releases) downl
 
 To install bash_env type the following:
 ```
-cp user_defined_functions  ~/.user_defined_functions
-cp bash_aliases            ~/.bash_aliases
-cp bash_logout             ~/.bash_logout
-cp bashrc                  ~/.bashrc
-cp profile                 ~/.profile
+cp user_defined_functions     /home/<username>/.user_defined_functions
+cp bash_aliases               /home/<username>/.bash_aliases
+cp bash_logout                /home/<username>/.bash_logout
+cp bashrc                     /home/<username>/.bashrc
+cp profile                    /home/<username>/.profile
+cp emacs                      /home/<username>/.emacs
+cp fill-column-indicator.el   /home/<username>/.emacs.d/lisp/
 ```
 
 ### DEPENDENCIES
