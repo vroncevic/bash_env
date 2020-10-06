@@ -1,3 +1,8 @@
+# Extended PATH for root user
+if [ "$EUID" -eq 0 ]; then
+    export PATH=${PATH}:/root/bin/
+fi
+
 # Load alias-utilities
 . /home/${USER}/.user_defined_functions
 
