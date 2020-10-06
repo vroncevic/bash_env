@@ -22,6 +22,17 @@ other information that should be provided before the tool is installed.
 
 [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/bash_env.svg)](https://github.com/vroncevic/bash_env/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/bash_env.svg)](https://github.com/vroncevic/bash_env/graphs/contributors)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Installation](#installation)
+- [Dependencies](#dependencies)
+- [Docs](#docs)
+- [Copyright and licence](#copyright-and-licence)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### Installation
 
 Navigate to release **[page](https://github.com/vroncevic/bash_env/releases)** download and extract release archive.
