@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [bash_env (Linux BASH/Emacs Environment files)](#bash_env-linux-bashemacs-environment-files)
+    - [Installation](#installation)
+    - [Dependencies](#dependencies)
+    - [Docs](#docs)
+    - [Copyright and licence](#copyright-and-licence)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # bash_env (Linux BASH/Emacs Environment files)
 
 Developed in **[bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))**, lisp.
