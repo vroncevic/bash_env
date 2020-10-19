@@ -1,10 +1,14 @@
 # Extended PATH for root user
-if [ "$EUID" -eq 0 ]; then
+if [ "${EUID}" -eq 0 ]; then
     export PATH=${PATH}:/root/bin/
 fi
 
 # Load alias-utilities
-. /home/${USER}/.user_defined_functions
+if [ "${EUID}" -eq 0 ]; then
+    . /root/.user_defined_functions
+else
+    . /home/${USER}/.user_defined_functions
+fi
 
 # Global aliasses
 alias l="ls -all"
