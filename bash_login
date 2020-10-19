@@ -1,0 +1,14 @@
+# Login notifications
+
+if [ -n "${SSH_CLIENT}" ] || [ -n "${SSH_TTY}" ]; then
+    # Remote login detect
+    if [ -x "/usr/bin/espeak" ]; then
+        espeak -s 100 -v en+f5 "Remote login detected"
+    fi
+else
+    # Do welcome
+    if [ -x "/usr/bin/espeak" ]; then
+        espeak -s 100 -v en+f5 "Welcome Vladimir"
+    fi
+fi
+

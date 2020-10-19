@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bash_env &mdash; bash_env https://github.com/vroncevic/bash_env/releases documentation</title>
+  <title>bash_env (Linux BASH/Emacs Environment files) &mdash; bash_env https://github.com/vroncevic/bash_env/releases documentation</title>
   
 
   
@@ -58,6 +58,10 @@
           
             
             
+              <div class="version">
+                1.2.0
+              </div>
+            
           
 
           
@@ -81,7 +85,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">bash_env</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">bash_env (Linux BASH/Emacs Environment files)</a></li>
 </ul>
 
             
@@ -128,7 +132,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>bash_env</li>
+      <li>bash_env (Linux BASH/Emacs Environment files)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -147,10 +151,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="bash-env">
-<h1>bash_env<a class="headerlink" href="#bash-env" title="Permalink to this headline">¶</a></h1>
-<p><strong>bash_env</strong> is startup env for bash/emacs user.</p>
-<p>Developed in <a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">bash</a> code: <strong>100%</strong>.</p>
+  <div class="section" id="bash-env-linux-bash-emacs-environment-files">
+<h1>bash_env (Linux BASH/Emacs Environment files)<a class="headerlink" href="#bash-env-linux-bash-emacs-environment-files" title="Permalink to this headline">¶</a></h1>
+<p>Linux BASH/Emacs Environment configuration files.</p>
+<p>Developed in <a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">bash</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Lisp_(programming_language">lisp</a>.</p>
 <p><a class="reference external" href="https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+shell+checker%22"><img alt="GitHub shell checker" src="https://github.com/vroncevic/bash_env/workflows/bash_env%20shell%20checker/badge.svg" /></a></p>
 <p>The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
@@ -165,11 +169,14 @@ other information that should be provided before the tool is installed.</p>
 <p>To install <strong>bash_env</strong> type the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvzf bash_env-x.y.z.tar.gz
 <span class="nb">cd</span> bash_env-x.y.z
-cp user_defined_functions  ~/.user_defined_functions
-cp bash_aliases            ~/.bash_aliases
-cp bash_logout             ~/.bash_logout
-cp bashrc                  ~/.bashrc
-cp profile                 ~/.profile
+cp user_defined_functions     /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_functions
+cp bash_aliases               /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_aliases
+cp bash_logout                /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_logout
+cp bash_login                 /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_login
+cp bashrc                     /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bashrc
+cp profile                    /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.profile
+cp emacs                      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs
+cp fill-column-indicator.el   /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs.d/lisp/
 </pre></div>
 </div>
 <p>Or You can use Docker to create image/container.</p>
@@ -177,32 +184,44 @@ cp profile                 ~/.profile
 </div>
 <div class="section" id="dependencies">
 <h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
-<dl class="docutils">
-<dt><strong>bash_env</strong> requires next modules and libraries:</dt>
-<dd>None</dd>
-</dl>
+<p><strong>bash_env</strong> requires next modules and libraries:</p>
+<ul class="simple">
+<li>None</li>
+</ul>
 </div>
-<div class="section" id="shell-tool-structure">
-<h1>Shell tool structure<a class="headerlink" href="#shell-tool-structure" title="Permalink to this headline">¶</a></h1>
-<p><strong>bash_env</strong> is based on bash.</p>
-<p>Code structure:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp user_defined_functions     /home/&lt;username&gt;/.user_defined_functions
-cp bash_aliases               /home/&lt;username&gt;/.bash_aliases
-cp bash_logout                /home/&lt;username&gt;/.bash_logout
-cp bashrc                     /home/&lt;username&gt;/.bashrc
-cp profile                    /home/&lt;username&gt;/.profile
-cp emacs                      /home/&lt;username&gt;/.emacs
-cp fill-column-indicator.el   /home/&lt;username&gt;/.emacs.d/lisp/
+<div class="section" id="set-of-modules">
+<h1>Set of modules<a class="headerlink" href="#set-of-modules" title="Permalink to this headline">¶</a></h1>
+<p><strong>bash_env</strong> is based on bash and lisp modules.</p>
+<p>Configuration files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_functions
+/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_aliases
+/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_logout
+/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_login
+/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bashrc
+/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.profile
+/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs
+/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs.d/lisp/
 </pre></div>
 </div>
 </div>
 <div class="section" id="copyright-and-licence">
 <h1>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License: GPL v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/Apache-2.0"><img alt="License: Apache 2.0" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a></p>
-<p>Copyright (C) 2017 by <a class="reference external" href="https://vroncevic.github.io/bash_env">vroncevic.github.io/bash_env</a></p>
+<p>Copyright (C) 2018 by <a class="reference external" href="https://vroncevic.github.io/bash_env">vroncevic.github.io/bash_env</a></p>
 <p><strong>bash_env</strong> is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,
 at your option, any later version of Bash 4 you may have available.</p>
+<p>Lets help and support FSF.</p>
+<p><a class="reference external" href="https://my.fsf.org/"><img alt="Free Software Foundation" src="https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/fsf-logo_1.png" /></a></p>
+<p><a class="reference external" href="https://my.fsf.org/donate/"><img alt="Donate" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" /></a></p>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
 </div>
 
 
