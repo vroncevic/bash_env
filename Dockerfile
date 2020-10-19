@@ -18,4 +18,17 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
  tree \
  htop \
- emacs
+ emacs \
+ dos2unix \
+ vim \
+ espeak
+
+COPY user_defined_functions     /root/.user_defined_functions
+COPY bash_aliases               /root/.bash_aliases
+COPY bash_logout                /root/.bash_logout
+COPY bash_login                 /root/.bash_login
+COPY bashrc                     /root/.bashrc
+COPY profile                    /root/.profile
+COPY emacs                      /root/.emacs
+COPY fill-column-indicator.el   /root/.emacs.d/lisp/
+RUN tree /root/

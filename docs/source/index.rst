@@ -1,9 +1,9 @@
-bash_env
----------
+bash_env (Linux BASH/Emacs Environment files)
+----------------------------------------------
 
-**bash_env** is startup env for bash/emacs user.
+Linux BASH/Emacs Environment configuration files.
 
-Developed in `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_ code: **100%**.
+Developed in `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_, `lisp <https://en.wikipedia.org/wiki/Lisp_(programming_language>`_.
 
 |GitHub shell checker|
 
@@ -43,11 +43,14 @@ To install **bash_env** type the following:
 
    tar xvzf bash_env-x.y.z.tar.gz
    cd bash_env-x.y.z
-   cp user_defined_functions  ~/.user_defined_functions
-   cp bash_aliases            ~/.bash_aliases
-   cp bash_logout             ~/.bash_logout
-   cp bashrc                  ~/.bashrc
-   cp profile                 ~/.profile
+   cp user_defined_functions     /home/${USERNAME}/.user_defined_functions
+   cp bash_aliases               /home/${USERNAME}/.bash_aliases
+   cp bash_logout                /home/${USERNAME}/.bash_logout
+   cp bash_login                 /home/${USERNAME}/.bash_login
+   cp bashrc                     /home/${USERNAME}/.bashrc
+   cp profile                    /home/${USERNAME}/.profile
+   cp emacs                      /home/${USERNAME}/.emacs
+   cp fill-column-indicator.el   /home/${USERNAME}/.emacs.d/lisp/
 
 Or You can use Docker to create image/container.
 
@@ -60,25 +63,27 @@ Dependencies
 -------------
 
 **bash_env** requires next modules and libraries:
-    None
 
-Shell tool structure
----------------------
+* None
 
-**bash_env** is based on bash.
+Set of modules
+----------------
 
-Code structure:
+**bash_env** is based on bash and lisp modules.
+
+Configuration files:
 
 .. code-block:: bash
 
-   cp user_defined_functions     /home/<username>/.user_defined_functions
-   cp bash_aliases               /home/<username>/.bash_aliases
-   cp bash_logout                /home/<username>/.bash_logout
-   cp bashrc                     /home/<username>/.bashrc
-   cp profile                    /home/<username>/.profile
-   cp emacs                      /home/<username>/.emacs
-   cp fill-column-indicator.el   /home/<username>/.emacs.d/lisp/
-   
+   /home/${USERNAME}/.user_defined_functions
+   /home/${USERNAME}/.bash_aliases
+   /home/${USERNAME}/.bash_logout
+   /home/${USERNAME}/.bash_login
+   /home/${USERNAME}/.bashrc
+   /home/${USERNAME}/.profile
+   /home/${USERNAME}/.emacs
+   /home/${USERNAME}/.emacs.d/lisp/
+
 Copyright and licence
 ----------------------
 
@@ -90,9 +95,27 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2017 by `vroncevic.github.io/bash_env <https://vroncevic.github.io/bash_env>`_
+Copyright (C) 2018 by `vroncevic.github.io/bash_env <https://vroncevic.github.io/bash_env>`_
 
 **bash_env** is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,
 at your option, any later version of Bash 4 you may have available.
 
+Lets help and support FSF.
+
+|Free Software Foundation|
+
+.. |Free Software Foundation| image:: https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/fsf-logo_1.png
+   :target: https://my.fsf.org/
+
+|Donate|
+
+.. |Donate| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
+   :target: https://my.fsf.org/donate/
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

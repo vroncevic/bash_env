@@ -24,7 +24,7 @@ copyright = u'2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
 
 # The short X.Y version
-version = u''
+version = u'1.2.0'
 # The full version, including alpha/beta/rc tags
 release = u'https://github.com/vroncevic/bash_env/releases'
 
@@ -38,8 +38,7 @@ release = u'https://github.com/vroncevic/bash_env/releases'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-]
+extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -128,8 +127,11 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'bash_env.tex', u'bash\\_env Documentation',
-     u'Vladimir Roncevic \\textless{}elektron.ronca@gmail.com\\textgreater{}', 'manual'),
+    (
+        master_doc, 'bash_env.tex', u'bash\\_env Documentation',
+        u'Vladimir Roncevic \\textless{}elektron.ronca@gmail.com\\textgreater{}',
+        'manual'
+    )
 ]
 
 
@@ -138,8 +140,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'bash_env', u'bash_env Documentation',
-     [author], 1)
+    (master_doc, 'bash_env', u'bash_env Documentation', [author], 1 )
 ]
 
 
@@ -149,9 +150,11 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'bash_env', u'bash_env Documentation',
-     author, 'bash_env', 'One line description of project.',
-     'Miscellaneous'),
+    (
+         master_doc, 'bash_env', u'bash_env Documentation',
+         author, 'bash_env', 'One line description of project.',
+         'Miscellaneous'
+    )
 ]
 
 
