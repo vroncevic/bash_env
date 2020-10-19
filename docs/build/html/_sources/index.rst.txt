@@ -43,6 +43,7 @@ To install **bash_env** type the following:
 
    tar xvzf bash_env-x.y.z.tar.gz
    cd bash_env-x.y.z
+   # standard user
    cp user_defined_functions     /home/${USERNAME}/.user_defined_functions
    cp bash_aliases               /home/${USERNAME}/.bash_aliases
    cp bash_logout                /home/${USERNAME}/.bash_logout
@@ -51,6 +52,15 @@ To install **bash_env** type the following:
    cp profile                    /home/${USERNAME}/.profile
    cp emacs                      /home/${USERNAME}/.emacs
    cp fill-column-indicator.el   /home/${USERNAME}/.emacs.d/lisp/
+   # root user
+   cp user_defined_functions     /root/.user_defined_functions
+   cp bash_aliases               /root/.bash_aliases
+   cp bash_logout                /root/.bash_logout
+   cp bash_login                 /root/.bash_login
+   cp bashrc                     /root/.bashrc
+   cp profile                    /root/.profile
+   cp emacs                      /root/.emacs
+   cp fill-column-indicator.el   /root/.emacs.d/lisp/
 
 Or You can use Docker to create image/container.
 
@@ -75,14 +85,14 @@ Configuration files:
 
 .. code-block:: bash
 
-   /home/${USERNAME}/.user_defined_functions
-   /home/${USERNAME}/.bash_aliases
-   /home/${USERNAME}/.bash_logout
-   /home/${USERNAME}/.bash_login
-   /home/${USERNAME}/.bashrc
-   /home/${USERNAME}/.profile
-   /home/${USERNAME}/.emacs
-   /home/${USERNAME}/.emacs.d/lisp/
+   .user_defined_functions
+   .bash_aliases
+   .bash_logout
+   .bash_login
+   .bashrc
+   .profile
+   .emacs
+   .emacs.d/lisp/fill-column-indicator.el
 
 Copyright and licence
 ----------------------
