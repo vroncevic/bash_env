@@ -1,10 +1,26 @@
 #
 # @brief   User defined functions
-# @version ver.1.2.0
+# @version ver.1.0.0
 # @date    Tue Feb 20 20:02:40 CET 2018
 # @company None, free software to use 2018
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+
+# Backup sync
+function __backup_sync {
+    local backup_destination=$1
+    local number_of_arguments=$#
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: backup_sync <BACKUP_DESTINATION_PATH>"
+        return 127
+    fi
+    if [[ ! -e $backup_destination ]]; then
+        printf "%s\n" "Check destination path ${backup_destination}"
+        return 128
+    fi
+    rsync -avu --delete "/data/" "${backup_destination}"
+    return 0
+}
 
 # Destroy VNC session (provide display port number)
 function __vnc_kill {
@@ -260,17 +276,6 @@ function __set_java {
 function __pyclean {
     find . -type f -name "*.py[co]" -delete
     find . -type d -name "__pycache__" -delete
-    return 0
-}
-
-# Generate Intel Hex file from elf
-function __gen_hex {
-    local number_of_arguments=$# elf_file=$1 hex_file=$2
-    if [[ $number_of_arguments -ne 2 ]]; then
-        printf "%s\n" "Usage: gen_hex <ELF-FILE> <HEX-FILE>"
-        return 127
-    fi
-    avr-objcopy -O ihex $elf_file $hex_file
     return 0
 }
 

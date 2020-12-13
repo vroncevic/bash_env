@@ -1,3 +1,11 @@
+#
+# @brief   User defined embedded functions
+# @version ver.1.0.0
+# @date    Tue Dec 13 02:53:00 CET 2020
+# @company None, free software to use 2020
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
 # Extended PATH for root user
 if [ "${EUID}" -eq 0 ]; then
     export PATH=${PATH}:/root/bin/
@@ -6,8 +14,10 @@ fi
 # Load alias-utilities
 if [ "${EUID}" -eq 0 ]; then
     . /root/.user_defined_functions
+    . /root/.user_defined_embedded_functions
 else
     . /home/${USER}/.user_defined_functions
+    . /home/${USER}/.user_defined_embedded_functions
 fi
 
 # Global aliasses
@@ -29,6 +39,7 @@ alias wtf="watch -n 1 w -hs"
 alias dumem="du -H --human-readable"
 alias check_wifi="lspci -vnn | grep Network"
 alias check_controllers="lspci -k"
+alias backup_sync="__backup_sync $1"
 alias listen_port="__listen_port $1"
 alias list_processes="__list_processes $1"
 alias mkdircd="__mkdircd $1"
@@ -53,5 +64,6 @@ alias java_update="update-alternatives --config java"
 alias vnc_kill="__vnc_kill $1"
 alias pyclean="__pyclean"
 alias gen_hex="__gen_hex $1 $2"
+alias flash_avr="__flash_avr $1 $2"
 alias http="python -m SimpleHTTPServer"
 alias sphinx_create="sphinx-quickstart"

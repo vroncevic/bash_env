@@ -44,23 +44,25 @@ To install **bash_env** type the following:
    tar xvzf bash_env-x.y.z.tar.gz
    cd bash_env-x.y.z
    # standard user
-   cp user_defined_functions     /home/${USERNAME}/.user_defined_functions
-   cp bash_aliases               /home/${USERNAME}/.bash_aliases
-   cp bash_logout                /home/${USERNAME}/.bash_logout
-   cp bash_login                 /home/${USERNAME}/.bash_login
-   cp bashrc                     /home/${USERNAME}/.bashrc
-   cp profile                    /home/${USERNAME}/.profile
-   cp emacs                      /home/${USERNAME}/.emacs
-   cp fill-column-indicator.el   /home/${USERNAME}/.emacs.d/lisp/
+   cp user_defined_functions              /home/${USERNAME}/.user_defined_functions
+   cp user_defined_embedded_functions     /home/${USERNAME}/.user_defined_embedded_functions
+   cp bash_aliases                        /home/${USERNAME}/.bash_aliases
+   cp bash_logout                         /home/${USERNAME}/.bash_logout
+   cp bash_login                          /home/${USERNAME}/.bash_login
+   cp bashrc                              /home/${USERNAME}/.bashrc
+   cp profile                             /home/${USERNAME}/.profile
+   cp emacs                               /home/${USERNAME}/.emacs
+   cp fill-column-indicator.el            /home/${USERNAME}/.emacs.d/lisp/
    # root user
-   cp user_defined_functions     /root/.user_defined_functions
-   cp bash_aliases               /root/.bash_aliases
-   cp bash_logout                /root/.bash_logout
-   cp bash_login                 /root/.bash_login
-   cp bashrc                     /root/.bashrc
-   cp profile                    /root/.profile
-   cp emacs                      /root/.emacs
-   cp fill-column-indicator.el   /root/.emacs.d/lisp/
+   cp user_defined_functions              /root/.user_defined_functions
+   cp user_defined_embedded_functions     /root/.user_defined_embedded_functions
+   cp bash_aliases                        /root/.bash_aliases
+   cp bash_logout                         /root/.bash_logout
+   cp bash_login                          /root/.bash_login
+   cp bashrc                              /root/.bashrc
+   cp profile                             /root/.profile
+   cp emacs                               /root/.emacs
+   cp fill-column-indicator.el            /root/.emacs.d/lisp/
 
 Or You can use Docker to create image/container.
 
