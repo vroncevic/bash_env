@@ -1,10 +1,48 @@
 #
 # @brief   User defined functions
-# @version ver.1.2.0
+# @version ver.1.0.0
 # @date    Tue Feb 20 20:02:40 CET 2018
 # @company None, free software to use 2018
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
+
+# Flashing AVR microcontrollers using avrdude
+function __flash_avr {
+    local microcontroller=$1
+    local hex_file_path=$2
+    local number_of_arguments=$#
+    if [[ $number_of_arguments -ne 2 ]]; then
+        printf "%s\n" "Usage: flash_avr <MICROCONTROLLER> <HEX_FILE_PATH>"
+        return 127
+    fi
+    local avrdude_path=$(which avrdude)
+    if [[ ! -e $avrdude_path ]]; then
+        printf "%s\n" "Check is it avrdude installed !"
+        return 128
+    fi
+    if [[ ! -e $hex_file_path ]]; then
+         printf "%s\n" "Hex file ${hex_file_path} exists ?"
+         return 129
+    fi
+    avrdude -c avrispmkII -p $microcontroller -U flash:w:${hex_file_path}
+    return 0
+}
+
+# Backup sync
+function __backup_sync {
+    local backup_destination=$1
+    local number_of_arguments=$#
+    if [[ $number_of_arguments -ne 1 ]]; then
+        printf "%s\n" "Usage: backup_sync <BACKUP_DESTINATION_PATH>"
+        return 127
+    fi
+    if [[ ! -e $backup_destination ]]; then
+        printf "%s\n" "Check destination path ${backup_destination}"
+        return 128
+    fi
+    rsync -avu --delete "/data/" "${backup_destination}"
+    return 0
+}
 
 # Destroy VNC session (provide display port number)
 function __vnc_kill {
