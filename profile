@@ -1,8 +1,10 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+#
+# @brief   User defined embedded functions
+# @version ver.1.0.0
+# @date    Tue Dec 13 02:53:00 CET 2020
+# @company None, free software to use 2020
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
 
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.

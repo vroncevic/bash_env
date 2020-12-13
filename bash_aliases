@@ -1,3 +1,11 @@
+#
+# @brief   User defined embedded functions
+# @version ver.1.0.0
+# @date    Tue Dec 13 02:53:00 CET 2020
+# @company None, free software to use 2020
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
 # Extended PATH for root user
 if [ "${EUID}" -eq 0 ]; then
     export PATH=${PATH}:/root/bin/
@@ -6,8 +14,10 @@ fi
 # Load alias-utilities
 if [ "${EUID}" -eq 0 ]; then
     . /root/.user_defined_functions
+    . /root/.user_defined_embedded_functions
 else
     . /home/${USER}/.user_defined_functions
+    . /home/${USER}/.user_defined_embedded_functions
 fi
 
 # Global aliasses

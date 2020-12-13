@@ -6,28 +6,6 @@
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
-# Flashing AVR microcontrollers using avrdude
-function __flash_avr {
-    local microcontroller=$1
-    local hex_file_path=$2
-    local number_of_arguments=$#
-    if [[ $number_of_arguments -ne 2 ]]; then
-        printf "%s\n" "Usage: flash_avr <MICROCONTROLLER> <HEX_FILE_PATH>"
-        return 127
-    fi
-    local avrdude_path=$(which avrdude)
-    if [[ ! -e $avrdude_path ]]; then
-        printf "%s\n" "Check is it avrdude installed !"
-        return 128
-    fi
-    if [[ ! -e $hex_file_path ]]; then
-         printf "%s\n" "Hex file ${hex_file_path} exists ?"
-         return 129
-    fi
-    avrdude -c avrispmkII -p $microcontroller -U flash:w:${hex_file_path}
-    return 0
-}
-
 # Backup sync
 function __backup_sync {
     local backup_destination=$1
@@ -298,17 +276,6 @@ function __set_java {
 function __pyclean {
     find . -type f -name "*.py[co]" -delete
     find . -type d -name "__pycache__" -delete
-    return 0
-}
-
-# Generate Intel Hex file from elf
-function __gen_hex {
-    local number_of_arguments=$# elf_file=$1 hex_file=$2
-    if [[ $number_of_arguments -ne 2 ]]; then
-        printf "%s\n" "Usage: gen_hex <ELF-FILE> <HEX-FILE>"
-        return 127
-    fi
-    avr-objcopy -O ihex $elf_file $hex_file
     return 0
 }
 
