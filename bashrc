@@ -1,5 +1,5 @@
 #
-# @brief   User defined embedded functions
+# @brief   Bash rc
 # @version ver.1.0.0
 # @date    Tue Dec 13 02:53:00 CET 2020
 # @company None, free software to use 2020
