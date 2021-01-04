@@ -15,9 +15,11 @@ fi
 if [ "${EUID}" -eq 0 ]; then
     . /root/.user_defined_functions
     . /root/.user_defined_embedded_functions
+    . /root/.user_defined_web_functions
 else
     . /home/${USER}/.user_defined_functions
     . /home/${USER}/.user_defined_embedded_functions
+    . /home/${USER}/.user_defined_web_functions
 fi
 
 # Global aliasses
@@ -67,3 +69,4 @@ alias gen_hex="__gen_hex $1 $2"
 alias flash_avr="__flash_avr $1 $2"
 alias http="python -m SimpleHTTPServer"
 alias sphinx_create="sphinx-quickstart"
+alias npm_process="__npm_process"

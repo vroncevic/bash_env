@@ -1,0 +1,38 @@
+#
+# @brief   User defined web functions
+# @version ver.1.0.0
+# @date    Mon Jan 04 08:53:43 AM CET 2021
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
+# npm process
+function __npm_process {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### Project setup
+    npm install
+
+### Compiles and hot-reloads for development
+    npm run serve
+
+### Compiles and minifies for production
+    npm run build
+
+### Lints and fixes files
+    npm run lint
+
+### Customize configuration
+    See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Deployment
+    ### Install server
+        npm install -g serve
+
+    ### -s flag means serve it in Single-Page Application mode which deals with the routing problem below
+        serve -s dist
+
+    ### See [Deployment general-guidelines](https://cli.vuejs.org/guide/deployment.html#general-guidelines).
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
