@@ -1,12 +1,22 @@
 #
-# @brief   User defined web functions
-# @version ver.1.0.0
+# @brief   User defined functions for web env
+# @version ver.1.3.0
 # @date    Mon Jan 04 08:53:43 AM CET 2021
 # @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
-# npm process
+# Web helper
+function __web_helper {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### NPM process (no arguments)
+    npm_process
+
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
+# NPM process
 function __npm_process {
     read -r -d '' END_HELP_TXT <<- END_HELP_TXT
 ### Project setup
@@ -22,16 +32,17 @@ function __npm_process {
     npm run lint
 
 ### Customize configuration
-    See [Configuration Reference](https://cli.vuejs.org/config/).
+    See https://cli.vuejs.org/config/.
 
 ### Deployment
     ### Install server
         npm install -g serve
 
-    ### -s flag means serve it in Single-Page Application mode which deals with the routing problem below
+    ### -s flag means serve it in Single-Page Application mode
+    ###    which deals with the routing problem below
         serve -s dist
 
-    ### See [Deployment general-guidelines](https://cli.vuejs.org/guide/deployment.html#general-guidelines).
+    ### See https://cli.vuejs.org/guide/deployment.html#general-guidelines.
 END_HELP_TXT
     echo "$END_HELP_TXT"
 }

@@ -1,0 +1,62 @@
+#
+# @brief   User defined functions for HW env
+# @version ver.1.3.0
+# @date    Mon Jan 04 08:53:43 AM CET 2021
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
+function __hw_helper {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### Check PCI controlers (no arguments)
+    check_pci_controllers
+
+### Check RAM (no arguments)
+    check_ram
+
+### Check RAM type (no arguments)
+    check_ram_type
+
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
+# Check PCI controlers
+function __check_pci_controllers {
+    local lspci_path=$(which lspci)
+    if [[ ! -e ${lspci_path} ]]; then
+        printf "%s\n" "Check executable lspci"
+        printf "%s\n" "If missing, run apt-get install pciutils"
+        return 127
+    fi
+    printf "%s\n" "List of devices"
+    lspci -v
+    printf "%s\n" "List of Kernel Modules"
+    lspci -k
+    return 0
+}
+
+# Check RAM
+function __check_ram {
+    local dmidecode_path=$(dmidecode)
+    if [[ ! -e ${dmidecode_path} ]]; then
+        printf "%s\n" "Check executable dmidecode"
+        printf "%s\n" "If missing, run sudo apt-get install dmidecode"
+        return 127
+    fi
+    eval "${dmidecode_path} --type 17 | more"
+    return 0
+}
+
+# Check RAM type
+function __check_ram_type {
+    local dmidecode_path=$(dmidecode)
+    if [[ ! -e ${dmidecode_path} ]]; then
+        printf "%s\n" "Check executable dmidecode"
+        printf "%s\n" "If missing, run sudo apt-get install dmidecode"
+        return 127
+    fi
+    eval "${dmidecode_path} -t memory"
+    return 0
+}
+

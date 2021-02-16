@@ -1,0 +1,52 @@
+#
+# @brief   User defined functions for java env
+# @version ver.1.3.0
+# @date    Tue Feb 16 12:25:40 CET 2021
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
+# Java helper
+function __java_helper {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### Set java (provide path of java executable)
+    set_java
+
+### Update java (no arguments)
+    update_java
+
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
+# Set java
+function __set_java {
+    local number_of_arguments=$# java_exec=$1
+    local ua_path=$(which update-alternatives)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: set_java <PATH>"
+        return 127
+    fi
+    if [[ ! -e ${ua_path} ]]; then
+        printf "%s\n" "Check executable update-alternatives"
+        return 128
+    fi
+    if [[ ! -e ${java_exec} ]];then
+        printf "%s\n" "Check executable java"
+        return 129
+    fi
+    eval "${ua_path} --install /usr/bin/java java ${java_exec} 1"
+    return 0
+}
+
+# Update java
+function __update_java {
+    local ua_path=$(which update-alternatives)
+    if [[ ! -e ${ua_path} ]]; then
+        printf "%s\n" "Check executable update-alternatives"
+        return 127
+    fi
+    eval "${ua_path} --config java"
+    return 0
+}
+

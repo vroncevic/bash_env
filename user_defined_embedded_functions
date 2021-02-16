@@ -1,41 +1,87 @@
 #
-# @brief   User defined embedded functions
-# @version ver.1.0.0
+# @brief   User defined functions for embedded env
+# @version ver.1.3.0
 # @date    Tue Dec 13 02:53:00 CET 2020
 # @company None, free software to use 2020
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
-# Flashing AVR microcontrollers using avrdude
-function __flash_avr {
-    local microcontroller=$1
-    local hex_file_path=$2
+# Embedded helper
+function __em_helper {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### Flashing AVR mcus using avrdude (provide MCU and HEX file path)
+    avr_flash
+
+### Generate Intel Hex file from elf (provide ELF path and HEX name)
+    avr_gen_hex
+
+### One file project compile (provide C module and MCU)
+    avr_one_file_project_compile
+
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
+# Flashing AVR mcus using avrdude
+function __avr_flash {
+    local mcu=$1 hex_path=$2
     local number_of_arguments=$#
-    if [[ $number_of_arguments -ne 2 ]]; then
-        printf "%s\n" "Usage: flash_avr <MICROCONTROLLER> <HEX_FILE_PATH>"
+    local programmer="avrispmkII"
+    local avrdude_path=$(which avrdude)
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: avr_flash <MCU> <HEX_PATH>"
         return 127
     fi
-    local avrdude_path=$(which avrdude)
-    if [[ ! -e $avrdude_path ]]; then
-        printf "%s\n" "Check is it avrdude installed !"
+    if [[ ! -e ${avrdude_path} ]]; then
+        printf "%s\n" "Check is avrdude installed"
+        printf "%s\n" "If missing, run apt-get install avrdude"
         return 128
     fi
-    if [[ ! -e $hex_file_path ]]; then
-         printf "%s\n" "Hex file ${hex_file_path} exists ?"
+    if [[ ! -e ${hex_path} ]]; then
+         printf "%s\n" "Hex file ${hex_path} exists ?"
          return 129
     fi
-    avrdude -c avrispmkII -p $microcontroller -U flash:w:${hex_file_path}
+    printf "%s\n" "Using by default programmer ${programmer}"
+    eval "${avrdude_path} -c ${programmer} -p ${mcu} -U flash:w:${hex_path}"
     return 0
 }
 
 # Generate Intel Hex file from elf
-function __gen_hex {
+function __avr_gen_hex {
     local number_of_arguments=$# elf_file=$1 hex_file=$2
-    if [[ $number_of_arguments -ne 2 ]]; then
-        printf "%s\n" "Usage: gen_hex <ELF-FILE> <HEX-FILE>"
+    local avr_objcopy_path=$(which avr-objcopy)
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: avr_gen_hex <ELF_FILE> <HEX_FILE>"
         return 127
     fi
-    avr-objcopy -O ihex $elf_file $hex_file
+    if [[ ! -e ${avr_objcopy_path} ]]; then
+        printf "%s\n" "Check is AVR toolchain installed"
+        printf "%s\n" "If missing, run apt-get install avrdude"
+        return 128
+    fi
+    eval "${avr_objcopy_path} -O ihex ${elf_file} ${hex_file}"
+    return 0
+}
+
+# One file project compile
+function __avr_one_file_project_compile {
+    local number_of_arguments=$# file_name=$1 mcu=$2
+    local avr_gcc_path=$(which avr-gcc)
+    local avr_objcopy_path=$(which avr-objcopy)
+    local avr_size_path=$(which avr-size)
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: avr_one_file_project_compile <C_FILE> <MCU>"
+        return 127
+    fi
+    if [[ ! -e ${avr_gcc_path} ]]; then
+        printf "%s\n" "Check is AVR toolchain installed"
+        printf "%s\n" "If missing, run apt-get install avrdude"
+        return 128
+    fi
+    eval "${avr_gcc_path} -g -Os -mmcu=${mcu} -c ${file_name}"
+    eval "${avr_gcc_path} -g -mmcu=${mcu} -o ${file_name}.elf ${file_name}.o"
+    eval "${avr_objcopy_path} -O ihex ${file_name}.elf ${file_name}.hex"
+    eval "${avr_size_path} --format=avr --mcu=${mcu} ${file_name}.elf"
     return 0
 }
 

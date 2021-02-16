@@ -44,25 +44,46 @@ To install **bash_env** type the following:
    tar xvzf bash_env-x.y.z.tar.gz
    cd bash_env-x.y.z
    # standard user
-   cp user_defined_functions              /home/${USERNAME}/.user_defined_functions
-   cp user_defined_embedded_functions     /home/${USERNAME}/.user_defined_embedded_functions
-   cp bash_aliases                        /home/${USERNAME}/.bash_aliases
-   cp bash_logout                         /home/${USERNAME}/.bash_logout
-   cp bash_login                          /home/${USERNAME}/.bash_login
-   cp bashrc                              /home/${USERNAME}/.bashrc
-   cp profile                             /home/${USERNAME}/.profile
-   cp emacs                               /home/${USERNAME}/.emacs
-   cp fill-column-indicator.el            /home/${USERNAME}/.emacs.d/lisp/
+   cp user_defined_functions           /home/${USERNAME}/.user_defined_functions
+   cp user_defined_str_functions       /home/${USERNAME}/.user_defined_str_functions
+   cp user_defined_file_functions      /home/${USERNAME}/.user_defined_file_functions
+   cp user_defined_hw_functions        /home/${USERNAME}/.user_defined_hw_functions
+   cp user_defined_net_functions       /home/${USERNAME}/.user_defined_net_functions
+   cp user_defined_py_functions        /home/${USERNAME}/.user_defined_py_functions
+   cp user_defined_perl_functions      /home/${USERNAME}/.user_defined_perl_functions
+   cp user_defined_java_functions      /home/${USERNAME}/.user_defined_java_functions
+   cp user_defined_embedded_functions  /home/${USERNAME}/.user_defined_embedded_functions
+   cp user_defined_web_functions       /home/${USERNAME}/.user_defined_web_functions
+   cp user_defined_git_functions       /home/${USERNAME}/.user_defined_git_functions
+   cp user_defined_doc_functions       /home/${USERNAME}/.user_defined_doc_functions
+   cp bash_aliases                     /home/${USERNAME}/.bash_aliases
+   cp bash_logout                      /home/${USERNAME}/.bash_logout
+   cp bash_login                       /home/${USERNAME}/.bash_login
+   cp bashrc                           /home/${USERNAME}/.bashrc
+   cp profile                          /home/${USERNAME}/.profile
+   cp emacs                            /home/${USERNAME}/.emacs
+   cp fill-column-indicator.el         /home/${USERNAME}/.emacs.d/lisp/
+
    # root user
-   cp user_defined_functions              /root/.user_defined_functions
-   cp user_defined_embedded_functions     /root/.user_defined_embedded_functions
-   cp bash_aliases                        /root/.bash_aliases
-   cp bash_logout                         /root/.bash_logout
-   cp bash_login                          /root/.bash_login
-   cp bashrc                              /root/.bashrc
-   cp profile                             /root/.profile
-   cp emacs                               /root/.emacs
-   cp fill-column-indicator.el            /root/.emacs.d/lisp/
+   cp user_defined_functions           /root/.user_defined_functions
+   cp user_defined_str_functions       /root/.user_defined_str_functions
+   cp user_defined_file_functions      /root/.user_defined_file_functions
+   cp user_defined_hw_functions        /root/.user_defined_hw_functions
+   cp user_defined_net_functions       /root/.user_defined_net_functions
+   cp user_defined_py_functions        /root/.user_defined_py_functions
+   cp user_defined_perl_functions      /root/.user_defined_perl_functions
+   cp user_defined_java_functions      /root/.user_defined_java_functions
+   cp user_defined_embedded_functions  /root/.user_defined_embedded_functions
+   cp user_defined_web_functions       /root/.user_defined_web_functions
+   cp user_defined_git_functions       /root/.user_defined_git_functions
+   cp user_defined_doc_functions       /root/.user_defined_doc_functions
+   cp bash_aliases                     /root/.bash_aliases
+   cp bash_logout                      /root/.bash_logout
+   cp bash_login                       /root/.bash_login
+   cp bashrc                           /root/.bashrc
+   cp profile                          /root/.profile
+   cp emacs                            /root/.emacs
+   cp fill-column-indicator.el         /root/.emacs.d/lisp/
 
 Or You can use Docker to create image/container.
 
@@ -88,6 +109,17 @@ Configuration files:
 .. code-block:: bash
 
    .user_defined_functions
+   .user_defined_str_functions
+   .user_defined_file_functions
+   .user_defined_hw_functions
+   .user_defined_net_functions
+   .user_defined_py_functions
+   .user_defined_perl_functions
+   .user_defined_java_functions
+   .user_defined_embedded_functions
+   .user_defined_web_functions
+   .user_defined_git_functions
+   .user_defined_doc_functions
    .bash_aliases
    .bash_logout
    .bash_login
