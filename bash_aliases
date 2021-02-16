@@ -1,25 +1,45 @@
 #
-# @brief   User defined embedded functions
-# @version ver.1.0.0
+# @brief   User defined aliases
+# @version ver.1.3.0
 # @date    Tue Dec 13 02:53:00 CET 2020
 # @company None, free software to use 2020
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
-# Extended PATH for root user
-if [ "${EUID}" -eq 0 ]; then
+# Extended PATH for root/user
+if [ ${EUID} -eq 0 ]; then
     export PATH=${PATH}:/root/bin/
+else
+    export PATH=${PATH}:/home/${USER}/bin/
 fi
 
 # Load alias-utilities
-if [ "${EUID}" -eq 0 ]; then
+if [ ${EUID} -eq 0 ]; then
     . /root/.user_defined_functions
+    . /root/.user_defined_str_functions
+    . /root/.user_defined_file_functions
+    . /root/.user_defined_hw_functions
+    . /root/.user_defined_net_functions
+    . /root/.user_defined_py_functions
+    . /root/.user_defined_perl_functions
+    . /root/.user_defined_java_functions
     . /root/.user_defined_embedded_functions
     . /root/.user_defined_web_functions
+    . /root/.user_defined_git_functions
+    . /root/.user_defined_doc_functions
 else
     . /home/${USER}/.user_defined_functions
+    . /home/${USER}/.user_defined_str_functions
+    . /home/${USER}/.user_defined_file_functions
+    . /home/${USER}/.user_defined_hw_functions
+    . /home/${USER}/.user_defined_net_functions
+    . /home/${USER}/.user_defined_py_functions
+    . /home/${USER}/.user_defined_perl_functions
+    . /home/${USER}/.user_defined_java_functions
     . /home/${USER}/.user_defined_embedded_functions
     . /home/${USER}/.user_defined_web_functions
+    . /home/${USER}/.user_defined_git_functions
+    . /home/${USER}/.user_defined_doc_functions
 fi
 
 # Global aliasses
@@ -34,39 +54,81 @@ alias cd..3="cd ../../../"
 alias ..4="cd ../../../.."
 alias cd..4="cd ../../../../"
 alias clear_history_bash="cat /dev/null > ~/.bash_history && history -c"
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
-alias version="ldconfig -v $1"
-alias wtf="watch -n 1 w -hs"
-alias dumem="du -H --human-readable"
-alias check_wifi="lspci -vnn | grep Network"
-alias check_controllers="lspci -k"
-alias backup_sync="__backup_sync $1"
-alias listen_port="__listen_port $1"
+
+# Common aliases
+alias common_helper="__common_helper"
+alias so_version="ldconfig -v $1"
 alias list_processes="__list_processes $1"
-alias mkdircd="__mkdircd $1"
-alias flast="__last_modified $1 $2"
-alias osize="__osize $1 $2"
-alias flist="__list_file_size $1 $2 $3"
-alias rmf="__rmf $1 $2 $3"
-alias arch_tar="__arch_tar $1 $2"
-alias arch_tar_gz="__arch_tar_gz $1 $2 $3"
-alias csort="__csort $1"
-alias cutcol="__cutcol $1 $2"
-alias cutchars="__cutchars $1 $2"
-alias chpmod="__check_perl_module $1"
-alias ukill="__kill_all $1"
-alias listport="netstat -tulpn"
-alias ulist="__acd $1"
-alias dft="df -TPh"
-alias check_ram="dmidecode --type 17 | more"
-alias check_ram_type="dmidecode -t memory"
-alias java_set="__set_java $1"
-alias java_update="update-alternatives --config java"
+alias connect_time_user="__connect_time_user $1"
+alias kill_all_by_user="__kill_all_by_user $1"
+alias archiving_tar="__archiving_tar $1 $2"
+alias archiving_gz="__archiving_gz $1 $2 $3"
+alias backup_sync="__backup_sync $1"
+alias df_type="__df_type"
+alias watch_activities="__watch_activities"
+
+# String aliases
+alias str_helper="__str_helper"
+alias replace="__replace $1 $2 $3"
+
+# File IO aliases
+alias file_io_helper="__file_io_helper"
+alias mkdir_cd="__mkdir_cd $1"
+alias list_all_by_size="__list_all_by_size $1 $2"
+alias last_modified="__last_modified $1 $2"
+alias list_files_size="__list_files_size $1 $2 $3"
+alias remove_files_by_size="__remove_files_by_size $1 $2 $3"
+alias count_duplicates="__count_duplicates $1"
+alias cut_columns_from_file="__cut_columns_from_file $1 $2"
+alias cut_chars_from_file="__cut_chars_from_file $1 $2"
+alias lines_number_per_file="__lines_number_per_file"
+alias check_sizes="__check_sizes"
+
+# HW aliases
+alias hw_helper="__hw_helper"
+alias check_pci_controllers="__check_pci_controllers"
+alias check_ram="__check_ram"
+alias check_ram_type="__check_ram_type"
+
+# Network aliases
+alias net_helper="__net_helper"
+alias check_wifi_card="__check_wifi_card"
+alias listen_port="__listen_port $1"
+alias all_sockets="__all_sockets"
 alias vnc_kill="__vnc_kill $1"
+
+# Python aliases
+alias py_helper="__py_helper"
 alias pyclean="__pyclean"
-alias gen_hex="__gen_hex $1 $2"
-alias flash_avr="__flash_avr $1 $2"
-alias http="python -m SimpleHTTPServer"
-alias sphinx_create="sphinx-quickstart"
+alias decopile_py_bytecode="__decopile_py_bytecode"
+alias http="__http"
+
+# Perl aliases
+alias pl_helper="__pl_helper"
+alias check_perl_module="__check_perl_module $1"
+
+# Java aliases
+alias java_helper="__java_helper"
+alias set_java="__set_java $1"
+alias update_java="__update_java"
+
+# Embedded aliases
+alias em_helper="__em_helper"
+alias avr_gen_hex="__avr_gen_hex $1 $2"
+alias avr_flash="__avr_flash $1 $2"
+alias avr_one_file_project_compile="__avr_one_file_project_compile"
+
+# Web aliases
+alias web_helper="__web_helper"
 alias npm_process="__npm_process"
+
+# Git aliases
+alias git_helper="__git_helper"
+alias list_conflicts="__list_conflicts"
+alias clean_list="__clean_list"
+
+# Doc aliases
+alias doc_helper="__doc_helper"
+alias sphinx_create="__sphinx_create"
+alias sphinx_doc="__sphinx_doc $1"
+

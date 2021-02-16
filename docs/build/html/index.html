@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.2.0
+                1.3.0
               </div>
             
           
@@ -170,25 +170,46 @@ other information that should be provided before the tool is installed.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvzf bash_env-x.y.z.tar.gz
 <span class="nb">cd</span> bash_env-x.y.z
 <span class="c1"># standard user</span>
-cp user_defined_functions              /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_functions
-cp user_defined_embedded_functions     /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_embedded_functions
-cp bash_aliases                        /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_aliases
-cp bash_logout                         /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_logout
-cp bash_login                          /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_login
-cp bashrc                              /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bashrc
-cp profile                             /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.profile
-cp emacs                               /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs
-cp fill-column-indicator.el            /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs.d/lisp/
+cp user_defined_functions           /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_functions
+cp user_defined_str_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_str_functions
+cp user_defined_file_functions      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_file_functions
+cp user_defined_hw_functions        /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_hw_functions
+cp user_defined_net_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_net_functions
+cp user_defined_py_functions        /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_py_functions
+cp user_defined_perl_functions      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_perl_functions
+cp user_defined_java_functions      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_java_functions
+cp user_defined_embedded_functions  /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_embedded_functions
+cp user_defined_web_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_web_functions
+cp user_defined_git_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_git_functions
+cp user_defined_doc_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_doc_functions
+cp bash_aliases                     /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_aliases
+cp bash_logout                      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_logout
+cp bash_login                       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_login
+cp bashrc                           /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bashrc
+cp profile                          /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.profile
+cp emacs                            /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs
+cp fill-column-indicator.el         /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs.d/lisp/
+
 <span class="c1"># root user</span>
-cp user_defined_functions              /root/.user_defined_functions
-cp user_defined_embedded_functions     /root/.user_defined_embedded_functions
-cp bash_aliases                        /root/.bash_aliases
-cp bash_logout                         /root/.bash_logout
-cp bash_login                          /root/.bash_login
-cp bashrc                              /root/.bashrc
-cp profile                             /root/.profile
-cp emacs                               /root/.emacs
-cp fill-column-indicator.el            /root/.emacs.d/lisp/
+cp user_defined_functions           /root/.user_defined_functions
+cp user_defined_str_functions       /root/.user_defined_str_functions
+cp user_defined_file_functions      /root/.user_defined_file_functions
+cp user_defined_hw_functions        /root/.user_defined_hw_functions
+cp user_defined_net_functions       /root/.user_defined_net_functions
+cp user_defined_py_functions        /root/.user_defined_py_functions
+cp user_defined_perl_functions      /root/.user_defined_perl_functions
+cp user_defined_java_functions      /root/.user_defined_java_functions
+cp user_defined_embedded_functions  /root/.user_defined_embedded_functions
+cp user_defined_web_functions       /root/.user_defined_web_functions
+cp user_defined_git_functions       /root/.user_defined_git_functions
+cp user_defined_doc_functions       /root/.user_defined_doc_functions
+cp bash_aliases                     /root/.bash_aliases
+cp bash_logout                      /root/.bash_logout
+cp bash_login                       /root/.bash_login
+cp bashrc                           /root/.bashrc
+cp profile                          /root/.profile
+cp emacs                            /root/.emacs
+cp fill-column-indicator.el         /root/.emacs.d/lisp/
 </pre></div>
 </div>
 <p>Or You can use Docker to create image/container.</p>
@@ -206,6 +227,17 @@ cp fill-column-indicator.el            /root/.emacs.d/lisp/
 <p><strong>bash_env</strong> is based on bash and lisp modules.</p>
 <p>Configuration files:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.user_defined_functions
+.user_defined_str_functions
+.user_defined_file_functions
+.user_defined_hw_functions
+.user_defined_net_functions
+.user_defined_py_functions
+.user_defined_perl_functions
+.user_defined_java_functions
+.user_defined_embedded_functions
+.user_defined_web_functions
+.user_defined_git_functions
+.user_defined_doc_functions
 .bash_aliases
 .bash_logout
 .bash_login

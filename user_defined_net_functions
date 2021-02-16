@@ -1,0 +1,84 @@
+#
+# @brief   User defined functions for network env
+# @version ver.1.3.0
+# @date    Tue Feb 16 12:28:40 CET 2021
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
+# Network helper
+function __net_helper {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### Check WiFi card (no arguments)
+    check_wifi_card
+
+### Check listen port (provide port number)
+    listen_port
+
+### Check sockets (no arguments)
+    all_sockets
+
+### Destroy VNC session (provide display port number)
+    vnc_kill
+
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
+# Check WiFi card
+function __check_wifi_card {
+    local lspci_path=$(which lspci)
+    if [[ ! -e ${lspci_path} ]]; then
+        printf "%s\n" "Check executable lspci"
+        printf "%s\n" "If missing, run apt-get install pciutils"
+        return 127
+    fi
+    eval "${lspci_path} -vnn | grep Network"
+    return 0
+}
+
+# Check listen port
+function __listen_port {
+    local number_of_arguments=$# netstat_path=$(which netstat) port_number=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: listen_port <PORT_NUMBER>"
+        return 127
+    fi
+    if [[ ! -e ${netstat_path} ]]; then
+        printf "%s\n" "Check executable netstat"
+        printf "%s\n" "If missing, run apt-get install net-tools"
+        return 128
+    fi
+    eval "${netstat_path} -tlpdn | grep ${port_number}"
+    return 0
+}
+
+# Check sockets
+function __all_sockets {
+    local netstat_path=$(which netstat)
+    if [[ ! -e ${netstat_path} ]]; then
+        printf "%s\n" "Check executable netstat"
+        printf "%s\n" "If missing, run apt-get install net-tools"
+        return 127
+    fi
+    eval "${netstat_path} -a"
+    return 0
+}
+
+# Destroy VNC session (provide display port number)
+function __vnc_kill {
+    local number_of_arguments=$# vncserver_path=$(which vncserver)
+    local display_number=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: vnc_kill <DISPLAY_NUMBER>"
+        return 127
+    fi
+    if [[ ! -e ${vncserver_path} ]]; then
+        printf "%s\n" "Check executable vncserver"
+        printf "%s\n" "If missing, run apt-get install tightvncserver"
+        return 128
+    fi
+    eval "${vncserver_path} -kill :${display_number}"
+    return 0
+}
+
