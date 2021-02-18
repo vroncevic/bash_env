@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/bash_env_logo.png" width="25%">
+
 # bash_env (Linux BASH/Emacs Environment files)
 
 Linux BASH/Emacs Environment configuration files.
