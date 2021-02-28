@@ -124,6 +124,7 @@ alias npm_process="__npm_process"
 
 # Git aliases
 alias git_helper="__git_helper"
+alias add_git_ssh="__add_git_ssh"
 alias list_conflicts="__list_conflicts"
 alias clean_list="__clean_list"
 
