@@ -1,6 +1,6 @@
 #
 # @brief   User defined functions for doc env
-# @version ver.1.3.2
+# @version ver.1.3.3
 # @date    Mon Jan 04 08:53:43 AM CET 2021
 # @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -35,14 +35,14 @@ function __sphinx_doc {
     local number_of_arguments=$# py_package=$1
     local sphinx_apidoc_path=$(which sphinx-apidoc)
     if [[ ${number_of_arguments} -ne 1 ]]; then
-        printf "%s\n" "Usage: sphinx_doc <PY_PACKAGE_PATH>"
+        printf "%s\n" "Usage: sphinx_doc <PY_PACKAGE>"
         return 127
     fi
     if [[ ! -e ${sphinx_apidoc_path} ]]; then
         printf "%s\n" "Check executable sphinx-apidoc"
         return 128
     fi
-    if [[ ! -d ${py_package} ]]; then
+    if [[ ! -d "../${py_package}" ]]; then
         printf "%s\n" "Check py package ${py_package}"
         return 129
     fi
