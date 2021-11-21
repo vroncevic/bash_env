@@ -24,23 +24,23 @@ RUN DEBIAN_FRONTEND=noninteractive \
     vim \
     espeak
 
-COPY cp user_defined_functions           /root/.user_defined_functions
-COPY cp user_defined_str_functions       /root/.user_defined_str_functions
-COPY cp user_defined_file_functions      /root/.user_defined_file_functions
-COPY cp user_defined_hw_functions        /root/.user_defined_hw_functions
-COPY cp user_defined_net_functions       /root/.user_defined_net_functions
-COPY cp user_defined_py_functions        /root/.user_defined_py_functions
-COPY cp user_defined_perl_functions      /root/.user_defined_perl_functions
-COPY cp user_defined_java_functions      /root/.user_defined_java_functions
-COPY cp user_defined_embedded_functions  /root/.user_defined_embedded_functions
-COPY cp user_defined_web_functions       /root/.user_defined_web_functions
-COPY cp user_defined_git_functions       /root/.user_defined_git_functions
-COPY cp user_defined_doc_functions       /root/.user_defined_doc_functions
-COPY cp bash_aliases                     /root/.bash_aliases
-COPY cp bash_logout                      /root/.bash_logout
-COPY cp bash_login                       /root/.bash_login
-COPY cp bashrc                           /root/.bashrc
-COPY cp profile                          /root/.profile
-COPY cp emacs                            /root/.emacs
-COPY cp fill-column-indicator.el         /root/.emacs.d/lisp/
+COPY user_defined_functions           /root/.user_defined_functions
+COPY user_defined_str_functions       /root/.user_defined_str_functions
+COPY user_defined_file_functions      /root/.user_defined_file_functions
+COPY user_defined_hw_functions        /root/.user_defined_hw_functions
+COPY user_defined_net_functions       /root/.user_defined_net_functions
+COPY user_defined_py_functions        /root/.user_defined_py_functions
+COPY user_defined_perl_functions      /root/.user_defined_perl_functions
+COPY user_defined_java_functions      /root/.user_defined_java_functions
+COPY user_defined_embedded_functions  /root/.user_defined_embedded_functions
+COPY user_defined_web_functions       /root/.user_defined_web_functions
+COPY user_defined_git_functions       /root/.user_defined_git_functions
+COPY user_defined_doc_functions       /root/.user_defined_doc_functions
+COPY bash_aliases                     /root/.bash_aliases
+COPY bash_logout                      /root/.bash_logout
+COPY bash_login                       /root/.bash_login
+COPY bashrc                           /root/.bashrc
+COPY profile                          /root/.profile
+COPY emacs                            /root/.emacs
+COPY fill-column-indicator.el         /root/.emacs.d/lisp/
 RUN tree /root/
