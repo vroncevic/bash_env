@@ -27,9 +27,11 @@ other information that should be provided before the tool is installed.
 
 ### Installation
 
+![Debian Linux OS](https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/debtux.png)
+
 Navigate to release **[page](https://github.com/vroncevic/bash_env/releases)** download and extract release archive.
 
-To install **bash_env** type the following:
+To install **bash_env** type the following
 ```
 # standard user
 cp user_defined_functions           /home/${USERNAME}/.user_defined_functions
@@ -80,7 +82,7 @@ Or You can use docker to create image/container.
 
 ### Dependencies
 
-**bash_env** requires next modules and libraries:
+**bash_env** requires next modules and libraries
 
     * None
 
@@ -88,7 +90,7 @@ Or You can use docker to create image/container.
 
 [![Documentation Status](https://readthedocs.org/projects/bash_env/badge/?version=latest)](https://bash_env.readthedocs.io/projects/bash_env/en/latest/?badge=latest)
 
-More documentation and info at:
+More documentation and info at
 * [https://bash_env.readthedocs.io/en/latest/](https://bash_env.readthedocs.io/en/latest/)
 * [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 

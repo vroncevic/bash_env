@@ -1,7 +1,7 @@
 #
 # @brief   User defined functions for HW env
-# @version ver.1.3.3
-# @date    Mon Jan 04 08:53:43 AM CET 2021
+# @version ver.1.4.3
+# @date    Sun 21 Nov 2021 04:36:00 PM CET
 # @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -23,8 +23,8 @@ END_HELP_TXT
 
 # Check PCI controlers
 function __check_pci_controllers {
-    local lspci_path=$(which lspci)
-    if [[ ! -e ${lspci_path} ]]; then
+    local LSPCI_PATH=$(which lspci)
+    if [[ ! -e ${LSPCI_PATH} ]]; then
         printf "%s\n" "Check executable lspci"
         printf "%s\n" "If missing, run apt-get install pciutils"
         return 127
@@ -38,25 +38,25 @@ function __check_pci_controllers {
 
 # Check RAM
 function __check_ram {
-    local dmidecode_path=$(dmidecode)
-    if [[ ! -e ${dmidecode_path} ]]; then
+    local DMIDECODE_PATH=$(dmidecode)
+    if [[ ! -e ${DMIDECODE_PATH} ]]; then
         printf "%s\n" "Check executable dmidecode"
         printf "%s\n" "If missing, run sudo apt-get install dmidecode"
         return 127
     fi
-    eval "${dmidecode_path} --type 17 | more"
+    eval "${DMIDECODE_PATH} --type 17 | more"
     return 0
 }
 
 # Check RAM type
 function __check_ram_type {
-    local dmidecode_path=$(dmidecode)
-    if [[ ! -e ${dmidecode_path} ]]; then
+    local DMIDECODE_PATH=$(dmidecode)
+    if [[ ! -e ${DMIDECODE_PATH} ]]; then
         printf "%s\n" "Check executable dmidecode"
         printf "%s\n" "If missing, run sudo apt-get install dmidecode"
         return 127
     fi
-    eval "${dmidecode_path} -t memory"
+    eval "${DMIDECODE_PATH} -t memory"
     return 0
 }
 

@@ -15,20 +15,32 @@
 
 FROM debian:10
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
- tree \
- htop \
- emacs \
- dos2unix \
- vim \
- espeak
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get install -yq --no-install-recommends \
+    tree \
+    htop \
+    emacs \
+    dos2unix \
+    vim \
+    espeak
 
-COPY user_defined_functions     /root/.user_defined_functions
-COPY bash_aliases               /root/.bash_aliases
-COPY bash_logout                /root/.bash_logout
-COPY bash_login                 /root/.bash_login
-COPY bashrc                     /root/.bashrc
-COPY profile                    /root/.profile
-COPY emacs                      /root/.emacs
-COPY fill-column-indicator.el   /root/.emacs.d/lisp/
+COPY user_defined_functions           /root/.user_defined_functions
+COPY user_defined_str_functions       /root/.user_defined_str_functions
+COPY user_defined_file_functions      /root/.user_defined_file_functions
+COPY user_defined_hw_functions        /root/.user_defined_hw_functions
+COPY user_defined_net_functions       /root/.user_defined_net_functions
+COPY user_defined_py_functions        /root/.user_defined_py_functions
+COPY user_defined_perl_functions      /root/.user_defined_perl_functions
+COPY user_defined_java_functions      /root/.user_defined_java_functions
+COPY user_defined_embedded_functions  /root/.user_defined_embedded_functions
+COPY user_defined_web_functions       /root/.user_defined_web_functions
+COPY user_defined_git_functions       /root/.user_defined_git_functions
+COPY user_defined_doc_functions       /root/.user_defined_doc_functions
+COPY bash_aliases                     /root/.bash_aliases
+COPY bash_logout                      /root/.bash_logout
+COPY bash_login                       /root/.bash_login
+COPY bashrc                           /root/.bashrc
+COPY profile                          /root/.profile
+COPY emacs                            /root/.emacs
+COPY fill-column-indicator.el         /root/.emacs.d/lisp/
 RUN tree /root/

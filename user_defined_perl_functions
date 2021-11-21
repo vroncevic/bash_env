@@ -1,7 +1,7 @@
 #
 # @brief   User defined functions for perl env
-# @version ver.1.3.3
-# @date    Tue Feb 16 12:26:40 CET 2021
+# @version ver.1.4.3
+# @date    Sun 21 Nov 2021 04:36:00 PM CET
 # @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -18,17 +18,17 @@ END_HELP_TXT
 
 # Check perl module info
 function __check_perl_module {
-    local num_of_args=$# perl_module=$1 cpan_path=$(which cpan)
-    if [[ ${number_of_arguments} -ne 1 ]]; then
+    local NUMBER_OF_ARGUMENTS=$# PERL_MODULE=$1 CPAN_PATH=$(which cpan)
+    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
         printf "%s\n" "Usage: check_perl_module <PERL_MODULE>"
         return 127
     fi
-    if [[ ! -e ${cpan_path} ]]; then
+    if [[ ! -e ${CPAN_PATH} ]]; then
         printf "%s\n" "Check executable cpan"
         printf "%s\n" "If missing, run apt-get install libpath-tiny-Perl"
         return 128
     fi
-    eval "${cpan_path} -D ${perl_module}"
+    eval "${CPAN_PATH} -D ${PERL_MODULE}"
     return 0
 }
 
