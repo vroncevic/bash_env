@@ -37,7 +37,7 @@ Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/bash_env/releases
 
-To install **bash_env** type the following:
+To install **bash_env** type the following
 
 .. code-block:: bash
 
@@ -95,7 +95,7 @@ Or You can use Docker to create image/container.
 Dependencies
 -------------
 
-**bash_env** requires next modules and libraries:
+**bash_env** requires next modules and libraries
 
 * None
 
@@ -104,7 +104,7 @@ Set of modules
 
 **bash_env** is based on bash and lisp modules.
 
-Configuration files:
+Configuration files
 
 .. code-block:: bash
 

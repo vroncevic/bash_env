@@ -1,7 +1,7 @@
 #
 # @brief   User defined functions for network env
-# @version ver.1.3.3
-# @date    Tue Feb 16 12:28:40 CET 2021
+# @version ver.1.4.3
+# @date    Sun 21 Nov 2021 04:36:00 PM CET
 # @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -27,58 +27,58 @@ END_HELP_TXT
 
 # Check WiFi card
 function __check_wifi_card {
-    local lspci_path=$(which lspci)
-    if [[ ! -e ${lspci_path} ]]; then
+    local LSPCI_PATH=$(which lspci)
+    if [[ ! -e ${LSPCI_PATH} ]]; then
         printf "%s\n" "Check executable lspci"
         printf "%s\n" "If missing, run apt-get install pciutils"
         return 127
     fi
-    eval "${lspci_path} -vnn | grep Network"
+    eval "${LSPCI_PATH} -vnn | grep Network"
     return 0
 }
 
 # Check listen port
 function __listen_port {
-    local number_of_arguments=$# netstat_path=$(which netstat) port_number=$1
-    if [[ ${number_of_arguments} -ne 1 ]]; then
+    local NUMBER_OF_ARGUMENTS=$# NETSTAT_PATH=$(which netstat) PORT_NUMBER=$1
+    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
         printf "%s\n" "Usage: listen_port <PORT_NUMBER>"
         return 127
     fi
-    if [[ ! -e ${netstat_path} ]]; then
+    if [[ ! -e ${NETSTAT_PATH} ]]; then
         printf "%s\n" "Check executable netstat"
         printf "%s\n" "If missing, run apt-get install net-tools"
         return 128
     fi
-    eval "${netstat_path} -tlpdn | grep ${port_number}"
+    eval "${NETSTAT_PATH} -tlpdn | grep ${PORT_NUMBER}"
     return 0
 }
 
 # Check sockets
 function __all_sockets {
-    local netstat_path=$(which netstat)
-    if [[ ! -e ${netstat_path} ]]; then
+    local NETSTAT_PATH=$(which netstat)
+    if [[ ! -e ${NETSTAT_PATH} ]]; then
         printf "%s\n" "Check executable netstat"
         printf "%s\n" "If missing, run apt-get install net-tools"
         return 127
     fi
-    eval "${netstat_path} -a"
+    eval "${NETSTAT_PATH} -a"
     return 0
 }
 
 # Destroy VNC session (provide display port number)
 function __vnc_kill {
-    local number_of_arguments=$# vncserver_path=$(which vncserver)
-    local display_number=$1
-    if [[ ${number_of_arguments} -ne 1 ]]; then
+    local NUMBER_OF_ARGUMENTS=$# VNCSERVER_PATH=$(which vncserver)
+    local DISPLAY_NUMBER=$1
+    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
         printf "%s\n" "Usage: vnc_kill <DISPLAY_NUMBER>"
         return 127
     fi
-    if [[ ! -e ${vncserver_path} ]]; then
+    if [[ ! -e ${VNCSERVER_PATH} ]]; then
         printf "%s\n" "Check executable vncserver"
         printf "%s\n" "If missing, run apt-get install tightvncserver"
         return 128
     fi
-    eval "${vncserver_path} -kill :${display_number}"
+    eval "${VNCSERVER_PATH} -kill :${DISPLAY_NUMBER}"
     return 0
 }
 
