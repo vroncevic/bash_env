@@ -3,7 +3,7 @@
 project = u'bash_env'
 copyright = u'2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
-version = u'1.3.3'
+version = u'1.4.4'
 release = u'https://github.com/vroncevic/bash_env/releases'
 extensions = []
 templates_path = ['_templates']
