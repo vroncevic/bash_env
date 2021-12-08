@@ -22,6 +22,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     emacs \
     dos2unix \
     vim \
+    nano \
     espeak
 
 COPY user_defined_functions           /root/.user_defined_functions
@@ -41,6 +42,7 @@ COPY bash_logout                      /root/.bash_logout
 COPY bash_login                       /root/.bash_login
 COPY bashrc                           /root/.bashrc
 COPY profile                          /root/.profile
+COPY bash_profile                     /root/.bash_profile
 COPY emacs                            /root/.emacs
 COPY fill-column-indicator.el         /root/.emacs.d/lisp/
 RUN tree /root/

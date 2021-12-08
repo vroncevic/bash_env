@@ -51,6 +51,7 @@ cp bash_logout                      /home/${USERNAME}/.bash_logout
 cp bash_login                       /home/${USERNAME}/.bash_login
 cp bashrc                           /home/${USERNAME}/.bashrc
 cp profile                          /home/${USERNAME}/.profile
+cp bash_profile                     /home/${USERNAME}/.bash_profile
 cp emacs                            /home/${USERNAME}/.emacs
 cp fill-column-indicator.el         /home/${USERNAME}/.emacs.d/lisp/
 
@@ -72,8 +73,29 @@ cp bash_logout                      /root/.bash_logout
 cp bash_login                       /root/.bash_login
 cp bashrc                           /root/.bashrc
 cp profile                          /root/.profile
+cp bash_profile                     /root/.bash_profile
 cp emacs                            /root/.emacs
 cp fill-column-indicator.el         /root/.emacs.d/lisp/
+```
+
+Updated default locale
+```
+vi /etc/default/locale
+```
+
+Modify configuraiion to
+```
+LANG="en_US.UTF-8"
+LANGUAGE="en_US:en"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_PAPER="en_US.UTF-8"
+LC_IDENTIFICATION="en_US.UTF-8"
+LC_NAME="en_US.UTF-8"
+LC_ADDRESS="en_US.UTF-8"
+LC_TELEPHONE="en_US.UTF-8"
+LC_MEASUREMENT="en_US.UTF-8"
 ```
 
 Or You can use docker to create image/container.
