@@ -1,8 +1,8 @@
 #
 # @brief   Bash rc
-# @version ver.1.4.4
-# @date    Sun 21 Nov 2021 04:36:00 PM CET
-# @company None, free software to use 2021
+# @version ver.1.5.4
+# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
@@ -114,3 +114,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# setting tab size for bash shell
+tabs 4
+

@@ -69,6 +69,7 @@ To install **bash_env** type the following
    cp bash_profile                     /home/${USERNAME}/.bash_profile
    cp emacs                            /home/${USERNAME}/.emacs
    cp fill-column-indicator.el         /home/${USERNAME}/.emacs.d/lisp/
+   cp gitconfig                        /home/${USERNAME}/.gitconfig
 
    # root user
    cp user_defined_functions           /root/.user_defined_functions
@@ -157,6 +158,7 @@ Configuration files
    .bash_profile
    .emacs
    .emacs.d/lisp/fill-column-indicator.el
+   .gitconfig
 
 Copyright and licence
 ----------------------

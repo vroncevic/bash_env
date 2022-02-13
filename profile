@@ -1,8 +1,8 @@
 #
 # @brief   User defined embedded functions
-# @version ver.1.4.4
-# @date    Sun 21 Nov 2021 04:36:00 PM CET
-# @company None, free software to use 2021
+# @version ver.1.5.4
+# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
@@ -25,4 +25,9 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "/root/bin/" ]; then
     PATH=${PATH}:/root/bin/
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
 fi

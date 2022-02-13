@@ -54,6 +54,7 @@ cp profile                          /home/${USERNAME}/.profile
 cp bash_profile                     /home/${USERNAME}/.bash_profile
 cp emacs                            /home/${USERNAME}/.emacs
 cp fill-column-indicator.el         /home/${USERNAME}/.emacs.d/lisp/
+cp gitconfig                        /home/${USERNAME}/.gitconfig
 
 # root user
 cp user_defined_functions           /root/.user_defined_functions
