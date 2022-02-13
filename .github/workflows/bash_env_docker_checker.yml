@@ -2,8 +2,14 @@ name: bash_env docker checker
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'bash_**'
+      - 'user_**'
   pull_request:
     branches: [ master ]
+    paths:
+      - 'bash_**'
+      - 'user_**'
 jobs:
   build:
     runs-on: ubuntu-latest
