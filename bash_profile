@@ -1,8 +1,8 @@
 #
 # @brief   Setup PATH and bash profile
-# @version ver.1.4.4
-# @date    Sun 21 Nov 2021 04:36:00 PM CET
-# @company None, free software to use 2021
+# @version ver.1.5.4
+# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
@@ -21,3 +21,7 @@ fi
 if [ -d "/root/bin/" ]; then
     PATH=${PATH}:/root/bin/
 fi
+
+# setup tab size for bash shell
+setterm -regtabs 4
+
