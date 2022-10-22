@@ -1,6 +1,6 @@
 #
 # @brief   User defined functions for embedded env
-# @version ver.1.6.4
+# @version ver.1.7.4
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -9,7 +9,13 @@
 # Embedded helper
 function __em_helper {
     read -r -d '' END_HELP_TXT <<- END_HELP_TXT
-### Flashing AVR mcus using avrdude (provide MCU and HEX file path)
+### Check AVR board info (provide MCU)
+    avr_info
+    
+### Flashing AVR mcu fuse bits using avrdude (provide MCU/EFUSE/HFUSE/LFUSE)
+    avr_flash_fuse
+    
+### Flashing AVR mcu using avrdude (provide MCU and HEX file path)
     avr_flash
 
 ### Generate Intel Hex file from elf (provide ELF path and HEX name)
@@ -22,9 +28,68 @@ END_HELP_TXT
     echo "$END_HELP_TXT"
 }
 
+# Read board info
+function __avr_info {
+    local MCU=$1
+    local NUMBER_OF_ARGUMENTS=$#
+    local PROGRAMMER="avrispmkII"
+    local AVRDUDE_PATH=$(which avrdude)
+    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
+        printf "%s\n" "Usage: avr_info <MCU>"
+        return 127
+    fi
+    if [[ ! -e ${AVRDUDE_PATH} ]]; then
+        printf "%s\n" "Check is avrdude installed"
+        printf "%s\n" "If missing, run apt-get install avrdude"
+        return 128
+    fi
+    eval "${AVRDUDE_PATH} -c ${PROGRAMMER} -p ${MCU}"
+    return 0
+}
+
+# Flashing AVR mcus fuse bits using avrdude
+function __avr_flash_fuse {
+    local MCU=$1
+    local EFUSE=$2
+    local HFUSE=$3
+    local LFUSE=$4
+    local NUMBER_OF_ARGUMENTS=$#
+    local PROGRAMMER="avrispmkII"
+    local AVRDUDE_PATH=$(which avrdude)
+    local NUM_REGEX='^[0-9]+$'
+    if [[ ${NUMBER_OF_ARGUMENTS} -ne 4 ]]; then
+        printf "%s\n" "Usage: avr_flash_fuse <MCU> <EFUSE> <HFUSE> <LFUSE>"
+        return 127
+    fi
+    if [[ ! -e ${AVRDUDE_PATH} ]]; then
+        printf "%s\n" "Check is avrdude installed"
+        printf "%s\n" "If missing, run apt-get install avrdude"
+        return 128
+    fi
+    if ! [[ $EFUSE =~ $NUM_REGEX ]]; then
+        printf "%s\n" "<EFUSE> should be in HEX format"
+        return 129
+    fi
+    if ! [[ $HFUSE =~ $NUM_REGEX ]]; then
+        printf "%s\n" "<HFUSE> should be in HEX format"
+        return 130
+    fi
+    if ! [[ $LFUSE =~ $NUM_REGEX ]]; then
+        printf "%s\n" "<LFUSE> should be in HEX format"
+        return 131
+    fi
+    local PEFUSE="-U efuse:w:${EFUSE}:m"
+    local PHFUSE="-U hfuse:w:${HFUSE}:m"
+    local PLFUSE="-U lfuse:w:${LFUSE}:m"
+    local FUSES="${PEFUSE} ${PHFUSE} ${PLFUSE}"
+    eval "${AVRDUDE_PATH} -c ${PROGRAMMER} -p ${MCU} ${FUSES}"
+    return 0
+}
+
 # Flashing AVR mcus using avrdude
 function __avr_flash {
-    local MCU=$1 HEX_PATH=$2
+    local MCU=$1
+    local HEX_PATH=$2
     local NUMBER_OF_ARGUMENTS=$#
     local PROGRAMMER="avrispmkII"
     local AVRDUDE_PATH=$(which avrdude)

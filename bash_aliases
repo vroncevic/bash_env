@@ -1,6 +1,6 @@
 #
 # @brief   User defined aliases
-# @version ver.1.6.4
+# @version ver.1.7.4
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -66,6 +66,7 @@ alias archiving_gz="__archiving_gz $1 $2 $3"
 alias backup_sync="__backup_sync $1"
 alias df_type="__df_type"
 alias watch_activities="__watch_activities"
+alias watch_time="__watch_time"
 
 # String aliases
 alias str_helper="__str_helper"
@@ -114,7 +115,9 @@ alias update_java="__update_java"
 
 # Embedded aliases
 alias em_helper="__em_helper"
+alias avr_info="__avr_info $1"
 alias avr_gen_hex="__avr_gen_hex $1 $2"
+alias avr_flash_fuse="__avr_flash_fuse $1 $2 $3 $4"
 alias avr_flash="__avr_flash $1 $2"
 alias avr_one_file_project_compile="__avr_one_file_project_compile"
 
@@ -127,6 +130,9 @@ alias git_helper="__git_helper"
 alias add_git_ssh="__add_git_ssh"
 alias list_conflicts="__list_conflicts"
 alias clean_list="__clean_list"
+alias check_big_changes="__check_big_changes"
+alias list_conflit_files="__list_conflit_files"
+alias clean_fetch_all="__clean_fetch_all"
 
 # Doc aliases
 alias doc_helper="__doc_helper"

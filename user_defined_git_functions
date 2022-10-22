@@ -1,6 +1,6 @@
 #
 # @brief   User defined functions for git env
-# @version ver.1.6.4
+# @version ver.1.7.4
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -9,11 +9,20 @@
 # Git helper
 function __git_helper {
     read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### List all big changes (no arguments)
+    check_big_changes
+
 ### List all conflicts (no arguments)
     list_conflicts
 
+### List all files with conflits (no arguments)
+    list_conflit_files
+
 ### List before clean up (no arguments)
     clean_list
+
+### Clean up repo and fetch all changes (no arguments)
+    clean_fetch_all
 
 ### Setup github ssh key
     add_git_ssh
@@ -35,9 +44,34 @@ function __list_conflicts {
     return 0
 }
 
+# List file names with conflicts
+function __list_conflit_files {
+    git diff --name-only --diff-filter=U
+    return 0
+}
+
 # List before clean up
 function __clean_list {
     git clean -nfd .
+    return 0
+}
+
+# Fetch all and clean repo
+function __clean_fetch_all {
+    git fetch --all --prune
+    return 0
+}
+
+# Check commits with big changes
+function __check_big_changes {
+    local BATCH_CHECK='%(objecttype) %(objectname) %(objectsize) %(rest)'
+    git rev-list --objects --all | \
+    git cat-file --batch-check=${BATCH_CHECK} | \
+    sed -n 's/^blob //p' | \
+    sort --numeric-sort --key=2 | \
+    cut -c 1-12,41- | \
+    $(command -v gnumfmt || echo numfmt) \
+    --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
     return 0
 }
 
