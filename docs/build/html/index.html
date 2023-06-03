@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bash_env (Linux BASH/Emacs Environment files) &mdash; bash_env https://github.com/vroncevic/bash_env/releases documentation</title>
@@ -11,7 +11,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -25,7 +27,7 @@
             <a href="#" class="icon icon-home"> bash_env
           </a>
               <div class="version">
-                1.7.4
+                1.7.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -64,75 +66,75 @@
            <div itemprop="articleBody">
              
   <section id="bash-env-linux-bash-emacs-environment-files">
-<h1>bash_env (Linux BASH/Emacs Environment files)<a class="headerlink" href="#bash-env-linux-bash-emacs-environment-files" title="Permalink to this headline"></a></h1>
-<p>Linux BASH/Emacs Environment configuration files.</p>
-<p>Developed in <a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">bash</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Lisp_(programming_language">lisp</a>.</p>
+<h1>bash_env (Linux BASH/Emacs Environment files)<a class="headerlink" href="#bash-env-linux-bash-emacs-environment-files" title="Permalink to this heading"></a></h1>
+<p>Linux BASH/Emacs environment configuration files.</p>
+<p>Developed in the <a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/Lisp_(programming_language">Lisp</a>.</p>
 <p><a class="reference external" href="https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+shell+checker%22"><img alt="GitHub shell checker" src="https://github.com/vroncevic/bash_env/workflows/bash_env%20shell%20checker/badge.svg" /></a></p>
 <p>The README is used to introduce the tool and provide instructions on
-how to install the tool, any machine dependencies it may have and any
+how to install the tool, any machine dependencies it may have, and any
 other information that should be provided before the tool is installed.</p>
 <p><a class="reference external" href="https://github.com/vroncevic/bash_env/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/vroncevic/bash_env.svg" /></a> <a class="reference external" href="https://bash_env.readthedocs.io/projects/bash_env/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/bash_env/badge/?version=latest" /></a> <a class="reference external" href="https://github.com/vroncevic/bash_env/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vroncevic/bash_env.svg" /></a></p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
 <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://www.debian.org"><img alt="Debian Linux OS" src="https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/debtux.png" /></a></p>
-<p>Navigate to release <a class="reference external" href="https://github.com/vroncevic/bash_env/releases">page</a> download and extract release archive.</p>
-<p>To install <strong>bash_env</strong> type the following</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvzf bash_env-x.y.z.tar.gz
-<span class="nb">cd</span> bash_env-x.y.z
+<p>Navigate to the release <a class="reference external" href="https://github.com/vroncevic/bash_env/releases">page</a> download and extract the release archive.</p>
+<p>To install <strong>bash_env</strong>, type the following</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar<span class="w"> </span>xvzf<span class="w"> </span>bash_env-x.y.z.tar.gz
+<span class="nb">cd</span><span class="w"> </span>bash_env-x.y.z
 <span class="c1"># standard user</span>
-cp user_defined_functions           /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_functions
-cp user_defined_str_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_str_functions
-cp user_defined_file_functions      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_file_functions
-cp user_defined_hw_functions        /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_hw_functions
-cp user_defined_net_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_net_functions
-cp user_defined_py_functions        /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_py_functions
-cp user_defined_perl_functions      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_perl_functions
-cp user_defined_java_functions      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_java_functions
-cp user_defined_embedded_functions  /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_embedded_functions
-cp user_defined_web_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_web_functions
-cp user_defined_git_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_git_functions
-cp user_defined_doc_functions       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_doc_functions
-cp bash_aliases                     /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_aliases
-cp bash_logout                      /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_logout
-cp bash_login                       /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_login
-cp bashrc                           /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bashrc
-cp profile                          /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.profile
-cp bash_profile                     /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_profile
-cp emacs                            /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs
-cp fill-column-indicator.el         /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs.d/lisp/
-cp gitconfig                        /home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.gitconfig
+cp<span class="w"> </span>user_defined_functions<span class="w">           </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_functions
+cp<span class="w"> </span>user_defined_str_functions<span class="w">       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_str_functions
+cp<span class="w"> </span>user_defined_file_functions<span class="w">      </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_file_functions
+cp<span class="w"> </span>user_defined_hw_functions<span class="w">        </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_hw_functions
+cp<span class="w"> </span>user_defined_net_functions<span class="w">       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_net_functions
+cp<span class="w"> </span>user_defined_py_functions<span class="w">        </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_py_functions
+cp<span class="w"> </span>user_defined_perl_functions<span class="w">      </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_perl_functions
+cp<span class="w"> </span>user_defined_java_functions<span class="w">      </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_java_functions
+cp<span class="w"> </span>user_defined_embedded_functions<span class="w">  </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_embedded_functions
+cp<span class="w"> </span>user_defined_web_functions<span class="w">       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_web_functions
+cp<span class="w"> </span>user_defined_git_functions<span class="w">       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_git_functions
+cp<span class="w"> </span>user_defined_doc_functions<span class="w">       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_doc_functions
+cp<span class="w"> </span>bash_aliases<span class="w">                     </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_aliases
+cp<span class="w"> </span>bash_logout<span class="w">                      </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_logout
+cp<span class="w"> </span>bash_login<span class="w">                       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_login
+cp<span class="w"> </span>bashrc<span class="w">                           </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bashrc
+cp<span class="w"> </span>profile<span class="w">                          </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.profile
+cp<span class="w"> </span>bash_profile<span class="w">                     </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_profile
+cp<span class="w"> </span>emacs<span class="w">                            </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs
+cp<span class="w"> </span>fill-column-indicator.el<span class="w">         </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.emacs.d/lisp/
+cp<span class="w"> </span>gitconfig<span class="w">                        </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.gitconfig
 
 <span class="c1"># root user</span>
-cp user_defined_functions           /root/.user_defined_functions
-cp user_defined_str_functions       /root/.user_defined_str_functions
-cp user_defined_file_functions      /root/.user_defined_file_functions
-cp user_defined_hw_functions        /root/.user_defined_hw_functions
-cp user_defined_net_functions       /root/.user_defined_net_functions
-cp user_defined_py_functions        /root/.user_defined_py_functions
-cp user_defined_perl_functions      /root/.user_defined_perl_functions
-cp user_defined_java_functions      /root/.user_defined_java_functions
-cp user_defined_embedded_functions  /root/.user_defined_embedded_functions
-cp user_defined_web_functions       /root/.user_defined_web_functions
-cp user_defined_git_functions       /root/.user_defined_git_functions
-cp user_defined_doc_functions       /root/.user_defined_doc_functions
-cp bash_aliases                     /root/.bash_aliases
-cp bash_logout                      /root/.bash_logout
-cp bash_login                       /root/.bash_login
-cp bashrc                           /root/.bashrc
-cp profile                          /root/.profile
-cp bash_profile                     /root/.bash_profile
-cp emacs                            /root/.emacs
-cp fill-column-indicator.el         /root/.emacs.d/lisp/
+cp<span class="w"> </span>user_defined_functions<span class="w">           </span>/root/.user_defined_functions
+cp<span class="w"> </span>user_defined_str_functions<span class="w">       </span>/root/.user_defined_str_functions
+cp<span class="w"> </span>user_defined_file_functions<span class="w">      </span>/root/.user_defined_file_functions
+cp<span class="w"> </span>user_defined_hw_functions<span class="w">        </span>/root/.user_defined_hw_functions
+cp<span class="w"> </span>user_defined_net_functions<span class="w">       </span>/root/.user_defined_net_functions
+cp<span class="w"> </span>user_defined_py_functions<span class="w">        </span>/root/.user_defined_py_functions
+cp<span class="w"> </span>user_defined_perl_functions<span class="w">      </span>/root/.user_defined_perl_functions
+cp<span class="w"> </span>user_defined_java_functions<span class="w">      </span>/root/.user_defined_java_functions
+cp<span class="w"> </span>user_defined_embedded_functions<span class="w">  </span>/root/.user_defined_embedded_functions
+cp<span class="w"> </span>user_defined_web_functions<span class="w">       </span>/root/.user_defined_web_functions
+cp<span class="w"> </span>user_defined_git_functions<span class="w">       </span>/root/.user_defined_git_functions
+cp<span class="w"> </span>user_defined_doc_functions<span class="w">       </span>/root/.user_defined_doc_functions
+cp<span class="w"> </span>bash_aliases<span class="w">                     </span>/root/.bash_aliases
+cp<span class="w"> </span>bash_logout<span class="w">                      </span>/root/.bash_logout
+cp<span class="w"> </span>bash_login<span class="w">                       </span>/root/.bash_login
+cp<span class="w"> </span>bashrc<span class="w">                           </span>/root/.bashrc
+cp<span class="w"> </span>profile<span class="w">                          </span>/root/.profile
+cp<span class="w"> </span>bash_profile<span class="w">                     </span>/root/.bash_profile
+cp<span class="w"> </span>emacs<span class="w">                            </span>/root/.emacs
+cp<span class="w"> </span>fill-column-indicator.el<span class="w">         </span>/root/.emacs.d/lisp/
 </pre></div>
 </div>
 <p>Updated default locale</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Updated default locale
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Updated<span class="w"> </span>default<span class="w"> </span>locale
 </pre></div>
 </div>
-<p>Modify configuraiion to</p>
+<p>Modify the configuration to</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">LANG</span><span class="o">=</span><span class="s2">&quot;en_US.UTF-8&quot;</span>
 <span class="nv">LANGUAGE</span><span class="o">=</span><span class="s2">&quot;en_US:en&quot;</span>
 <span class="nv">LC_NUMERIC</span><span class="o">=</span><span class="s2">&quot;en_US.UTF-8&quot;</span>
@@ -146,19 +148,19 @@ cp fill-column-indicator.el         /root/.emacs.d/lisp/
 <span class="nv">LC_MEASUREMENT</span><span class="o">=</span><span class="s2">&quot;en_US.UTF-8&quot;</span>
 </pre></div>
 </div>
-<p>Or You can use Docker to create image/container.</p>
+<p>Or you can use Docker to create an image or container.</p>
 <p><a class="reference external" href="https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+docker+checker%22"><img alt="GitHub docker checker" src="https://github.com/vroncevic/bash_env/workflows/bash_env%20docker%20checker/badge.svg" /></a></p>
 </section>
 <section id="dependencies">
-<h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline"></a></h1>
-<p><strong>bash_env</strong> requires next modules and libraries</p>
+<h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading"></a></h1>
+<p><strong>bash_env</strong> requires the next modules and libraries</p>
 <ul class="simple">
 <li><p>None</p></li>
 </ul>
 </section>
 <section id="set-of-modules">
-<h1>Set of modules<a class="headerlink" href="#set-of-modules" title="Permalink to this headline"></a></h1>
-<p><strong>bash_env</strong> is based on bash and lisp modules.</p>
+<h1>Set of modules<a class="headerlink" href="#set-of-modules" title="Permalink to this heading"></a></h1>
+<p><strong>bash_env</strong> is based on Bash and Lisp modules.</p>
 <p>Configuration files</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.user_defined_functions
 .user_defined_str_functions
@@ -185,7 +187,7 @@ cp fill-column-indicator.el         /root/.emacs.d/lisp/
 </div>
 </section>
 <section id="copyright-and-licence">
-<h1>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Permalink to this headline"></a></h1>
+<h1>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License: GPL v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/Apache-2.0"><img alt="License: Apache 2.0" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a></p>
 <p>Copyright (C) 2018 by <a class="reference external" href="https://vroncevic.github.io/bash_env">vroncevic.github.io/bash_env</a></p>
 <p><strong>bash_env</strong> is free software; you can redistribute it and/or modify it
@@ -196,7 +198,7 @@ at your option, any later version of Bash 4 you may have available.</p>
 <p><a class="reference external" href="https://my.fsf.org/donate/"><img alt="Donate" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" /></a></p>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>

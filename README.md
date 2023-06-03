@@ -2,14 +2,14 @@
 
 # bash_env (Linux BASH/Emacs Environment files)
 
-Linux BASH/Emacs Environment configuration files.
+Linux BASH/Emacs environment configuration files.
 
-Developed in **[bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))**, **[lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language))**.
+Developed in the **[Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))** and **[Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language))**.
 
 [![bash_env shell checker](https://github.com/vroncevic/bash_env/workflows/bash_env%20shell%20checker/badge.svg)](https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+shell+checker%22)
 
 The README is used to introduce the tool and provide instructions on
-how to install the tool, any machine dependencies it may have and any
+how to install the tool, any machine dependencies it may have, and any
 other information that should be provided before the tool is installed.
 
 [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/bash_env.svg)](https://github.com/vroncevic/bash_env/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/bash_env.svg)](https://github.com/vroncevic/bash_env/graphs/contributors)
@@ -29,9 +29,9 @@ other information that should be provided before the tool is installed.
 
 ![Debian Linux OS](https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/debtux.png)
 
-Navigate to release **[page](https://github.com/vroncevic/bash_env/releases)** download and extract release archive.
+Navigate to the release **[page](https://github.com/vroncevic/bash_env/releases)** download and extract the release archive.
 
-To install **bash_env** type the following
+To install **bash_env**, type the following
 ```
 # standard user
 cp user_defined_functions           /home/${USERNAME}/.user_defined_functions
@@ -84,7 +84,7 @@ Updated default locale
 vi /etc/default/locale
 ```
 
-Modify configuraiion to
+Modify the configuration to
 ```
 LANG="en_US.UTF-8"
 LANGUAGE="en_US:en"
@@ -99,13 +99,13 @@ LC_TELEPHONE="en_US.UTF-8"
 LC_MEASUREMENT="en_US.UTF-8"
 ```
 
-Or You can use docker to create image/container.
+Or you can use Docker to create an image or container.
 
 [![bash_env docker checker](https://github.com/vroncevic/bash_env/workflows/bash_env%20docker%20checker/badge.svg)](https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+docker+checker%22)
 
 ### Dependencies
 
-**bash_env** requires next modules and libraries
+**bash_env** requires the next modules and libraries
 
     * None
 
@@ -113,7 +113,7 @@ Or You can use docker to create image/container.
 
 [![Documentation Status](https://readthedocs.org/projects/bash_env/badge/?version=latest)](https://bash_env.readthedocs.io/projects/bash_env/en/latest/?badge=latest)
 
-More documentation and info at
+More documentation and information at
 * [https://bash_env.readthedocs.io/en/latest/](https://bash_env.readthedocs.io/en/latest/)
 * [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 

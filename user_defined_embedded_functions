@@ -1,6 +1,6 @@
 #
-# @brief   User defined functions for embedded env
-# @version ver.1.7.4
+# @brief   User-defined functions for embedded env
+# @version ver.1.7.5
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -27,6 +27,8 @@ function __em_helper {
 END_HELP_TXT
     echo "$END_HELP_TXT"
 }
+
+AVR_ENV="gcc-avr binutils-avr avr-libc gdb-avr avrdude"
 
 # Read board info
 function __avr_info {
@@ -121,7 +123,7 @@ function __avr_gen_hex {
     fi
     if [[ ! -e ${AVR_OBJCOPY_PATH} ]]; then
         printf "%s\n" "Check is AVR toolchain installed"
-        printf "%s\n" "If missing, run apt-get install avrdude"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
         return 128
     fi
     eval "${AVR_OBJCOPY_PATH} -O ihex ${ELF_FILE} ${HEX_FILE}"
@@ -140,13 +142,22 @@ function __avr_one_file_project_compile {
     fi
     if [[ ! -e ${AVR_GCC_PATH} ]]; then
         printf "%s\n" "Check is AVR toolchain installed"
-        printf "%s\n" "If missing, run apt-get install avrdude"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
         return 128
     fi
     eval "${AVR_GCC_PATH} -g -Os -mmcu=${MCU} -c ${FILE_NAME}"
     eval "${AVR_GCC_PATH} -g -mmcu=${MCU} -o ${FILE_NAME}.elf ${FILE_NAME}.o"
+    if [[ ! -e ${AVR_OBJCOPY_PATH} ]]; then
+        printf "%s\n" "Check is AVR toolchain installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 129
+    fi
     eval "${AVR_OBJCOPY_PATH} -O ihex ${FILE_NAME}.elf ${FILE_NAME}.hex"
+    if [[ ! -e ${AVR_SIZE_PATH} ]]; then
+        printf "%s\n" "Check is AVR toolchain installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 129
+    fi
     eval "${AVR_SIZE_PATH} --format=avr --mcu=${MCU} ${FILE_NAME}.elf"
     return 0
 }
-

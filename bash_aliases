@@ -1,6 +1,6 @@
 #
-# @brief   User defined aliases
-# @version ver.1.7.4
+# @brief   User-defined aliases
+# @version ver.1.7.5
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -138,4 +138,3 @@ alias clean_fetch_all="__clean_fetch_all"
 alias doc_helper="__doc_helper"
 alias sphinx_create="__sphinx_create"
 alias sphinx_doc="__sphinx_doc $1"
-

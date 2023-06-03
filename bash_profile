@@ -1,6 +1,6 @@
 #
 # @brief   Setup PATH and bash profile
-# @version ver.1.7.4
+# @version ver.1.7.5
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -24,4 +24,3 @@ fi
 
 # setup tab size for bash shell
 setterm -regtabs 4
-

@@ -1,9 +1,9 @@
 bash_env (Linux BASH/Emacs Environment files)
 ----------------------------------------------
 
-Linux BASH/Emacs Environment configuration files.
+Linux BASH/Emacs environment configuration files.
 
-Developed in `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_, `lisp <https://en.wikipedia.org/wiki/Lisp_(programming_language>`_.
+Developed in the `Bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_, and `Lisp <https://en.wikipedia.org/wiki/Lisp_(programming_language>`_.
 
 |GitHub shell checker|
 
@@ -11,7 +11,7 @@ Developed in `bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_, `lisp <h
    :target: https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+shell+checker%22
 
 The README is used to introduce the tool and provide instructions on
-how to install the tool, any machine dependencies it may have and any
+how to install the tool, any machine dependencies it may have, and any
 other information that should be provided before the tool is installed.
 
 |GitHub issues| |Documentation Status| |GitHub contributors|
@@ -38,11 +38,11 @@ Installation
 .. |Debian Linux OS| image:: https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/debtux.png
    :target: https://www.debian.org
 
-Navigate to release `page`_ download and extract release archive.
+Navigate to the release `page`_ download and extract the release archive.
 
 .. _page: https://github.com/vroncevic/bash_env/releases
 
-To install **bash_env** type the following
+To install **bash_env**, type the following
 
 .. code-block:: bash
 
@@ -99,7 +99,7 @@ Updated default locale
 
    Updated default locale
 
-Modify configuraiion to
+Modify the configuration to
 
 .. code-block:: bash
 
@@ -115,7 +115,7 @@ Modify configuraiion to
    LC_TELEPHONE="en_US.UTF-8"
    LC_MEASUREMENT="en_US.UTF-8"
 
-Or You can use Docker to create image/container.
+Or you can use Docker to create an image or container.
 
 |GitHub docker checker|
 
@@ -125,14 +125,14 @@ Or You can use Docker to create image/container.
 Dependencies
 -------------
 
-**bash_env** requires next modules and libraries
+**bash_env** requires the next modules and libraries
 
 * None
 
 Set of modules
 ----------------
 
-**bash_env** is based on bash and lisp modules.
+**bash_env** is based on Bash and Lisp modules.
 
 Configuration files
 
