@@ -1,6 +1,6 @@
 #
 # @brief   Bash rc
-# @version ver.1.7.4
+# @version ver.1.7.5
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -67,3 +67,10 @@ if ! shopt -oq posix; then
     fi
 fi
 
+if [ -d /opt/rpi/pico-sdk ]; then
+    export PICO_SDK_PATH=/opt/rpi/pico-sdk
+fi
+
+if [ -f /opt/ros/humble/setup.bash ]; then
+    source /opt/ros/humble/setup.bash
+fi

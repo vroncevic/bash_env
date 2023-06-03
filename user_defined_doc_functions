@@ -1,6 +1,6 @@
 #
-# @brief   User defined functions for doc env
-# @version ver.1.7.4
+# @brief   User-defined functions for doc env
+# @version ver.1.7.5
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -23,7 +23,8 @@ END_HELP_TXT
 function __sphinx_create {
     local SPHINX_PATH=$(which sphinx-quickstart)
     if [[ ! -e ${SPHINX_PATH} ]]; then
-        printf "%s\n" "Check executable sphinx-quickstart"
+        printf "%s\n" "Check is sphinx installed"
+        printf "%s\n" "If missing, run apt install python3-sphinx"
         return 127
     fi
     sphinx-quickstart
@@ -39,7 +40,8 @@ function __sphinx_doc {
         return 127
     fi
     if [[ ! -e ${SPHINX_APIDOC_PATH} ]]; then
-        printf "%s\n" "Check executable sphinx-apidoc"
+        printf "%s\n" "Check is sphinx installed"
+        printf "%s\n" "If missing, run apt install python3-sphinx"
         return 128
     fi
     if [[ ! -d "../${PY_PACKAGE}" ]]; then

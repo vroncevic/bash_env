@@ -1,6 +1,6 @@
 #
-# @brief   User defined functions for file operations
-# @version ver.1.7.4
+# @brief   User-defined functions for file operations
+# @version ver.1.7.5
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -52,6 +52,7 @@ function __mkdir_cd {
     fi
     mkdir "${DIR_PATH}/"
     cd "${DIR_PATH}/"
+    return 0
 }
 
 # List files and directories by size
@@ -164,10 +165,11 @@ function __cut_chars_from_file {
 # Number of lines per file
 function __lines_number_per_file {
     find . -type f -exec wc -l '{}' \;
+    return 0
 }
 
 # Check file sizes
 function __check_sizes {
     du -H --human-readable
+    return 0
 }
-

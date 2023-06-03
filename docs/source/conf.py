@@ -3,13 +3,13 @@
 project = u'bash_env'
 copyright = u'2020, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author = u'Vladimir Roncevic <elektron.ronca@gmail.com>'
-version = u'1.7.4'
+version = u'1.7.5'
 release = u'https://github.com/vroncevic/bash_env/releases'
 extensions = []
 templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
-language = None
+language = 'en'
 exclude_patterns = []
 pygments_style = None
 html_theme = 'sphinx_rtd_theme'
