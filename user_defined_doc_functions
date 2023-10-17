@@ -15,6 +15,9 @@ function __doc_helper {
 ### Generation sphinx API doc (provide py package path)
     sphinx_doc
 
+### Generation doxygen configuration (no arguments)
+    doxygen_create
+
 END_HELP_TXT
     echo "$END_HELP_TXT"
 }
@@ -49,5 +52,17 @@ function __sphinx_doc {
         return 129
     fi
     eval "${SPHINX_APIDOC_PATH} -P -f -e -a -o source/ ../${PY_PACKAGE}/"
+    return 0
+}
+
+# Generation of Doxyfile
+function __doxygen_create {
+    local DOXYFILE="Doxyfile"
+    local DOXYGEN_PATH=$(which doxygen)
+    if [[ ! -e ${DOXYGEN_PATH} ]]; then
+        printf "%s\n" "Check is doxygen installed"
+        return 127
+    fi
+    eval "${DOXYGEN_PATH} -g $DOXYFILE"
     return 0
 }

@@ -39,6 +39,12 @@ function __file_io_helper {
 ### Check file sizes (no arguments)
     check_sizes
 
+### Clang format cc and h modules (no arguments)
+    clang_format
+
+### Find and list last modifications (path)
+    last_modifications
+
 END_HELP_TXT
     echo "$END_HELP_TXT"
 }
@@ -172,4 +178,23 @@ function __lines_number_per_file {
 function __check_sizes {
     du -H --human-readable
     return 0
+}
+
+# Format cc and h modules
+function __clang_format {
+    local FILE_EXTENSIONS="-name \"*.cc\" -o -name \"*.h\""
+    local CLANG="clang-format-15 -style=file:.clang-format -i {}"
+    eval "find . ${FILE_EXTENSIONS} | xargs -I {} ${CLANG}"
+}
+
+# Find and list last modifications
+function __last_modifications {
+    local NUMBER_OF_ARGUMENTS=$# PATH=$1
+    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
+        printf "%s\n" "Usage: last_modifications <PATH>"
+        return 127
+    fi
+    local STAT="stat --format '%Y :%y %n'"
+    local SORT="| sort -nr | cut -d: -f2- | head"
+    eval "find ${PATH} -type f -exec ${STAT} "{}" \; ${SORT}"
 }
