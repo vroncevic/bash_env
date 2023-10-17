@@ -24,6 +24,9 @@ function __em_helper {
 ### One file project compile (provide C module and MCU)
     avr_one_file_project_compile
 
+### Flashing STM8 device (provide MCU and HEX file path)
+    stm8flash_hex
+
 END_HELP_TXT
     echo "$END_HELP_TXT"
 }
@@ -159,5 +162,28 @@ function __avr_one_file_project_compile {
         return 129
     fi
     eval "${AVR_SIZE_PATH} --format=avr --mcu=${MCU} ${FILE_NAME}.elf"
+    return 0
+}
+
+# Flash STM8 device
+function __stm8flash_hex {
+    local NUMBER_OF_ARGUMENTS=$#
+    local CONTROLLER=$1
+    local HEX_FILE=$2
+    local STM8FLASH_PATH=$(which stm8flash)
+    if [[ ${NUMBER_OF_ARGUMENTS} -ne 2 ]]; then
+        printf "%s\n" "Usage: stm8flash_hex <MCU> <HEX>"
+        return 127
+    fi
+    if [[ ! -e ${STM8FLASH_PATH} ]]; then
+        printf "%s\n" "Check is stm8flash installed"
+        return 128
+    fi
+    if [[ ! -e "${HEX_FILE}" ]]; then
+        printf "%s\n" "Check HEX file"
+        return 129
+    fi
+    local FLASH_PARAMS="-c stlinkv2 -p ${CONTROLLER} -s flash"
+    eval "${STM8FLASH_PATH} ${FLASH_PARAMS} -w ${HEX_FILE}"
     return 0
 }

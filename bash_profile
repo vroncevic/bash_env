@@ -24,3 +24,4 @@ fi
 
 # setup tab size for bash shell
 setterm -regtabs 4
+

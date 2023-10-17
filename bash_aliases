@@ -53,7 +53,6 @@ alias ..3="cd ../../.."
 alias cd..3="cd ../../../"
 alias ..4="cd ../../../.."
 alias cd..4="cd ../../../../"
-alias clear_history_bash="cat /dev/null > ~/.bash_history && history -c"
 
 # Common aliases
 alias common_helper="__common_helper"
@@ -84,6 +83,8 @@ alias cut_columns_from_file="__cut_columns_from_file $1 $2"
 alias cut_chars_from_file="__cut_chars_from_file $1 $2"
 alias lines_number_per_file="__lines_number_per_file"
 alias check_sizes="__check_sizes"
+alias clang_format="__clang_format"
+alias last_modifications="__last_modifications $1"
 
 # HW aliases
 alias hw_helper="__hw_helper"
@@ -120,6 +121,7 @@ alias avr_gen_hex="__avr_gen_hex $1 $2"
 alias avr_flash_fuse="__avr_flash_fuse $1 $2 $3 $4"
 alias avr_flash="__avr_flash $1 $2"
 alias avr_one_file_project_compile="__avr_one_file_project_compile"
+alias stm8flash_hex="__stm8flash_hex $1 $2"
 
 # Web aliases
 alias web_helper="__web_helper"
@@ -138,3 +140,4 @@ alias clean_fetch_all="__clean_fetch_all"
 alias doc_helper="__doc_helper"
 alias sphinx_create="__sphinx_create"
 alias sphinx_doc="__sphinx_doc $1"
+alias doxygen_create="__doxygen_create"
