@@ -20,6 +20,7 @@ if [ ${EUID} -eq 0 ]; then
     . /root/.user_defined_file_functions
     . /root/.user_defined_hw_functions
     . /root/.user_defined_net_functions
+    . /root/.user_defined_rs_functions
     . /root/.user_defined_py_functions
     . /root/.user_defined_perl_functions
     . /root/.user_defined_java_functions
@@ -33,6 +34,7 @@ else
     . /home/${USER}/.user_defined_file_functions
     . /home/${USER}/.user_defined_hw_functions
     . /home/${USER}/.user_defined_net_functions
+    . /home/${USER}/.user_defined_rs_functions
     . /home/${USER}/.user_defined_py_functions
     . /home/${USER}/.user_defined_perl_functions
     . /home/${USER}/.user_defined_java_functions
@@ -98,6 +100,11 @@ alias check_wifi_card="__check_wifi_card"
 alias listen_port="__listen_port $1"
 alias all_sockets="__all_sockets"
 alias vnc_kill="__vnc_kill $1"
+
+# Rust aliases
+alias rs_helper="__rs_helper"
+alias install_rs="__install_rs"
+alias setup_rs="__setup_rs"
 
 # Python aliases
 alias py_helper="__py_helper"
