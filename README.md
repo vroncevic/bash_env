@@ -101,8 +101,6 @@ LC_MEASUREMENT="en_US.UTF-8"
 
 Or you can use Docker to create an image or container.
 
-[![bash_env docker checker](https://github.com/vroncevic/bash_env/workflows/bash_env%20docker%20checker/badge.svg)](https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+docker+checker%22)
-
 ### Dependencies
 
 **bash_env** requires the next modules and libraries

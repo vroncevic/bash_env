@@ -117,11 +117,6 @@ Modify the configuration to
 
 Or you can use Docker to create an image or container.
 
-|GitHub docker checker|
-
-.. |GitHub docker checker| image:: https://github.com/vroncevic/bash_env/workflows/bash_env%20docker%20checker/badge.svg
-   :target: https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+docker+checker%22
-
 Dependencies
 -------------
 
