@@ -23,7 +23,7 @@ other information that should be provided before the tool is installed.
    :target: https://github.com/vroncevic/bash_env/graphs/contributors
 
 .. |Documentation Status| image:: https://readthedocs.org/projects/bash_env/badge/?version=latest
-   :target: https://bash_env.readthedocs.io/projects/bash_env/en/latest/?badge=latest
+   :target: https://bash-env.readthedocs.io/projects/bash_env/en/latest/?badge=latest
 
 .. toctree::
     :hidden:

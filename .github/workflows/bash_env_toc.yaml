@@ -1,4 +1,4 @@
-name: bash_env toc
+name: bash_env_toc
 on:
   push:
     paths:

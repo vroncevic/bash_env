@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-FROM debian:10
+FROM debian:12
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install -yq --no-install-recommends \
@@ -37,6 +37,7 @@ COPY user_defined_embedded_functions  /root/.user_defined_embedded_functions
 COPY user_defined_web_functions       /root/.user_defined_web_functions
 COPY user_defined_git_functions       /root/.user_defined_git_functions
 COPY user_defined_doc_functions       /root/.user_defined_doc_functions
+COPY user_defined_rust_functions       /root/.user_defined_rust_functions
 COPY bash_aliases                     /root/.bash_aliases
 COPY bash_logout                      /root/.bash_logout
 COPY bash_login                       /root/.bash_login
