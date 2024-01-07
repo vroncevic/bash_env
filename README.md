@@ -6,8 +6,6 @@ Linux BASH/Emacs environment configuration files.
 
 Developed in the **[Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))** and **[Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language))**.
 
-[![bash_env shell checker](https://github.com/vroncevic/bash_env/workflows/bash_env%20shell%20checker/badge.svg)](https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+shell+checker%22)
-
 The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have, and any
 other information that should be provided before the tool is installed.

@@ -5,11 +5,6 @@ Linux BASH/Emacs environment configuration files.
 
 Developed in the `Bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_, and `Lisp <https://en.wikipedia.org/wiki/Lisp_(programming_language>`_.
 
-|GitHub shell checker|
-
-.. |GitHub shell checker| image:: https://github.com/vroncevic/bash_env/workflows/bash_env%20shell%20checker/badge.svg
-   :target: https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+shell+checker%22
-
 The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have, and any
 other information that should be provided before the tool is installed.
@@ -23,7 +18,7 @@ other information that should be provided before the tool is installed.
    :target: https://github.com/vroncevic/bash_env/graphs/contributors
 
 .. |Documentation Status| image:: https://readthedocs.org/projects/bash_env/badge/?version=latest
-   :target: https://bash_env.readthedocs.io/projects/bash_env/en/latest/?badge=latest
+   :target: https://bash-env.readthedocs.io/projects/bash_env/en/latest/?badge=latest
 
 .. toctree::
     :hidden:
@@ -61,6 +56,7 @@ To install **bash_env**, type the following
    cp user_defined_web_functions       /home/${USERNAME}/.user_defined_web_functions
    cp user_defined_git_functions       /home/${USERNAME}/.user_defined_git_functions
    cp user_defined_doc_functions       /home/${USERNAME}/.user_defined_doc_functions
+   cp user_defined_rust_functions      /home/${USERNAME}/.user_defined_rust_functions
    cp bash_aliases                     /home/${USERNAME}/.bash_aliases
    cp bash_logout                      /home/${USERNAME}/.bash_logout
    cp bash_login                       /home/${USERNAME}/.bash_login
@@ -84,6 +80,7 @@ To install **bash_env**, type the following
    cp user_defined_web_functions       /root/.user_defined_web_functions
    cp user_defined_git_functions       /root/.user_defined_git_functions
    cp user_defined_doc_functions       /root/.user_defined_doc_functions
+   cp user_defined_rust_functions      /root/.user_defined_rust_functions
    cp bash_aliases                     /root/.bash_aliases
    cp bash_logout                      /root/.bash_logout
    cp bash_login                       /root/.bash_login
@@ -145,6 +142,7 @@ Configuration files
    .user_defined_web_functions
    .user_defined_git_functions
    .user_defined_doc_functions
+   .user_defined_rust_functions
    .bash_aliases
    .bash_logout
    .bash_login
@@ -166,7 +164,7 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2018 by `vroncevic.github.io/bash_env <https://vroncevic.github.io/bash_env>`_
+Copyright (C) 2018 - 2024 by `vroncevic.github.io/bash_env <https://vroncevic.github.io/bash_env>`_
 
 **bash_env** is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,

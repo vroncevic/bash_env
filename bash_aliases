@@ -1,6 +1,6 @@
 #
 # @brief   User-defined aliases
-# @version ver.1.8.5
+# @version ver.1.8.6
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -28,6 +28,7 @@ if [ ${EUID} -eq 0 ]; then
     . /root/.user_defined_web_functions
     . /root/.user_defined_git_functions
     . /root/.user_defined_doc_functions
+    . /root/.user_defined_rust_functions
 else
     . /home/${USER}/.user_defined_functions
     . /home/${USER}/.user_defined_str_functions
@@ -42,6 +43,7 @@ else
     . /home/${USER}/.user_defined_web_functions
     . /home/${USER}/.user_defined_git_functions
     . /home/${USER}/.user_defined_doc_functions
+    . /home/${USER}/.user_defined_rust_functions
 fi
 
 # Global aliasses
