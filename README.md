@@ -32,7 +32,8 @@ other information that should be provided before the tool is installed.
 Navigate to the release **[page](https://github.com/vroncevic/bash_env/releases)** download and extract the release archive.
 
 To install **bash_env**, type the following
-```
+
+```bash
 # standard user
 cp user_defined_functions           /home/${USERNAME}/.user_defined_functions
 cp user_defined_str_functions       /home/${USERNAME}/.user_defined_str_functions
@@ -46,6 +47,7 @@ cp user_defined_embedded_functions  /home/${USERNAME}/.user_defined_embedded_fun
 cp user_defined_web_functions       /home/${USERNAME}/.user_defined_web_functions
 cp user_defined_git_functions       /home/${USERNAME}/.user_defined_git_functions
 cp user_defined_doc_functions       /home/${USERNAME}/.user_defined_doc_functions
+cp user_defined_rust_functions      /home/${USERNAME}/.user_defined_rust_functions
 cp bash_aliases                     /home/${USERNAME}/.bash_aliases
 cp bash_logout                      /home/${USERNAME}/.bash_logout
 cp bash_login                       /home/${USERNAME}/.bash_login
@@ -69,6 +71,7 @@ cp user_defined_embedded_functions  /root/.user_defined_embedded_functions
 cp user_defined_web_functions       /root/.user_defined_web_functions
 cp user_defined_git_functions       /root/.user_defined_git_functions
 cp user_defined_doc_functions       /root/.user_defined_doc_functions
+cp user_defined_rust_functions      /root/.user_defined_rust_functions
 cp bash_aliases                     /root/.bash_aliases
 cp bash_logout                      /root/.bash_logout
 cp bash_login                       /root/.bash_login
@@ -80,12 +83,14 @@ cp fill-column-indicator.el         /root/.emacs.d/lisp/
 ```
 
 Updated default locale
-```
+
+```bash
 vi /etc/default/locale
 ```
 
 Modify the configuration to
-```
+
+```bash
 LANG="en_US.UTF-8"
 LANGUAGE="en_US:en"
 LC_NUMERIC="en_US.UTF-8"
@@ -109,17 +114,17 @@ Or you can use Docker to create an image or container.
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/bash_env/badge/?version=latest)](https://bash_env.readthedocs.io/projects/bash_env/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/bash_env/badge/?version=latest)](https://bash-env.readthedocs.io/projects/bash_env/en/latest/?badge=latest)
 
 More documentation and information at
-* [https://bash_env.readthedocs.io/en/latest/](https://bash_env.readthedocs.io/en/latest/)
+* [https://bash_env.readthedocs.io/en/latest/](https://bash-env.readthedocs.io/en/latest/)
 * [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 
 ### Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2018 by [vroncevic.github.io/bash_env](https://vroncevic.github.io/bash_env)
+Copyright (C) 2018 - 2024 by [vroncevic.github.io/bash_env](https://vroncevic.github.io/bash_env)
 
 **bash_env** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,

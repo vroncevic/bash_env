@@ -1,4 +1,4 @@
-name: bash_env shell checker
+name: bash_env_shell_checker
 on:
   push:
     branches: [ master ]
