@@ -1,6 +1,6 @@
 #
 # @brief   Bash rc
-# @version ver.1.8.5
+# @version ver.1.8.6
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -12,11 +12,16 @@ case $- in
 esac
 
 HISTCONTROL=ignoreboth
+
 shopt -s histappend
+
 HISTSIZE=1000
 HISTFILESIZE=2000
+
 shopt -s checkwinsize
+
 shopt -s globstar
+
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then

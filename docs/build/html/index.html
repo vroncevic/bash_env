@@ -40,11 +40,10 @@
 <h1>bash_env (Linux BASH/Emacs Environment files)<a class="headerlink" href="#bash-env-linux-bash-emacs-environment-files" title="Permalink to this heading">¶</a></h1>
 <p>Linux BASH/Emacs environment configuration files.</p>
 <p>Developed in the <a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/Lisp_(programming_language">Lisp</a>.</p>
-<p><a class="reference external" href="https://github.com/vroncevic/bash_env/actions?query=workflow%3A%22bash_env+shell+checker%22"><img alt="GitHub shell checker" src="https://github.com/vroncevic/bash_env/workflows/bash_env%20shell%20checker/badge.svg" /></a></p>
 <p>The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have, and any
 other information that should be provided before the tool is installed.</p>
-<p><a class="reference external" href="https://github.com/vroncevic/bash_env/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/vroncevic/bash_env.svg" /></a> <a class="reference external" href="https://bash_env.readthedocs.io/projects/bash_env/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/bash_env/badge/?version=latest" /></a> <a class="reference external" href="https://github.com/vroncevic/bash_env/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vroncevic/bash_env.svg" /></a></p>
+<p><a class="reference external" href="https://github.com/vroncevic/bash_env/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/vroncevic/bash_env.svg" /></a> <a class="reference external" href="https://bash-env.readthedocs.io/projects/bash_env/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/bash_env/badge/?version=latest" /></a> <a class="reference external" href="https://github.com/vroncevic/bash_env/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vroncevic/bash_env.svg" /></a></p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -68,6 +67,7 @@ cp<span class="w"> </span>user_defined_embedded_functions<span class="w">  </spa
 cp<span class="w"> </span>user_defined_web_functions<span class="w">       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_web_functions
 cp<span class="w"> </span>user_defined_git_functions<span class="w">       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_git_functions
 cp<span class="w"> </span>user_defined_doc_functions<span class="w">       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_doc_functions
+cp<span class="w"> </span>user_defined_rust_functions<span class="w">      </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.user_defined_rust_functions
 cp<span class="w"> </span>bash_aliases<span class="w">                     </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_aliases
 cp<span class="w"> </span>bash_logout<span class="w">                      </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_logout
 cp<span class="w"> </span>bash_login<span class="w">                       </span>/home/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/.bash_login
@@ -91,6 +91,7 @@ cp<span class="w"> </span>user_defined_embedded_functions<span class="w">  </spa
 cp<span class="w"> </span>user_defined_web_functions<span class="w">       </span>/root/.user_defined_web_functions
 cp<span class="w"> </span>user_defined_git_functions<span class="w">       </span>/root/.user_defined_git_functions
 cp<span class="w"> </span>user_defined_doc_functions<span class="w">       </span>/root/.user_defined_doc_functions
+cp<span class="w"> </span>user_defined_rust_functions<span class="w">      </span>/root/.user_defined_rust_functions
 cp<span class="w"> </span>bash_aliases<span class="w">                     </span>/root/.bash_aliases
 cp<span class="w"> </span>bash_logout<span class="w">                      </span>/root/.bash_logout
 cp<span class="w"> </span>bash_login<span class="w">                       </span>/root/.bash_login
@@ -144,6 +145,7 @@ cp<span class="w"> </span>fill-column-indicator.el<span class="w">         </spa
 .user_defined_web_functions
 .user_defined_git_functions
 .user_defined_doc_functions
+.user_defined_rust_functions
 .bash_aliases
 .bash_logout
 .bash_login
@@ -159,7 +161,7 @@ cp<span class="w"> </span>fill-column-indicator.el<span class="w">         </spa
 <section id="copyright-and-licence">
 <h1>Copyright and licence<a class="headerlink" href="#copyright-and-licence" title="Permalink to this heading">¶</a></h1>
 <p><a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License: GPL v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a> <a class="reference external" href="https://opensource.org/licenses/Apache-2.0"><img alt="License: Apache 2.0" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a></p>
-<p>Copyright (C) 2018 by <a class="reference external" href="https://vroncevic.github.io/bash_env">vroncevic.github.io/bash_env</a></p>
+<p>Copyright (C) 2018 - 2024 by <a class="reference external" href="https://vroncevic.github.io/bash_env">vroncevic.github.io/bash_env</a></p>
 <p><strong>bash_env</strong> is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,
 at your option, any later version of Bash 4 you may have available.</p>
