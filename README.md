@@ -55,6 +55,7 @@ cp bash_profile                     /home/${USERNAME}/.bash_profile
 cp emacs                            /home/${USERNAME}/.emacs
 cp fill-column-indicator.el         /home/${USERNAME}/.emacs.d/lisp/
 cp gitconfig                        /home/${USERNAME}/.gitconfig
+cp gdbinit                          /home/${USERNAME}/.gdbinit
 
 # root user
 cp user_defined_functions           /root/.user_defined_functions
@@ -78,6 +79,7 @@ cp profile                          /root/.profile
 cp bash_profile                     /root/.bash_profile
 cp emacs                            /root/.emacs
 cp fill-column-indicator.el         /root/.emacs.d/lisp/
+cp gdbinit                          /root/.gdbinit
 ```
 
 Updated default locale
