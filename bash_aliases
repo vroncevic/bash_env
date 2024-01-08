@@ -1,6 +1,6 @@
 #
 # @brief   User-defined aliases
-# @version ver.1.8.6
+# @version ver.1.9.6
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -144,6 +144,9 @@ alias clean_list="__clean_list"
 alias check_big_changes="__check_big_changes"
 alias list_conflit_files="__list_conflit_files"
 alias clean_fetch_all="__clean_fetch_all"
+alias check_big_changes="__check_big_changes"
+alias remove_big_file="__remove_big_file $1"
+alias ref_tag="__ref_tag"
 
 # Doc aliases
 alias doc_helper="__doc_helper"

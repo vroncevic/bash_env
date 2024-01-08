@@ -37,7 +37,7 @@ COPY user_defined_embedded_functions  /root/.user_defined_embedded_functions
 COPY user_defined_web_functions       /root/.user_defined_web_functions
 COPY user_defined_git_functions       /root/.user_defined_git_functions
 COPY user_defined_doc_functions       /root/.user_defined_doc_functions
-COPY user_defined_rust_functions       /root/.user_defined_rust_functions
+COPY user_defined_rust_functions      /root/.user_defined_rust_functions
 COPY bash_aliases                     /root/.bash_aliases
 COPY bash_logout                      /root/.bash_logout
 COPY bash_login                       /root/.bash_login
@@ -46,4 +46,5 @@ COPY profile                          /root/.profile
 COPY bash_profile                     /root/.bash_profile
 COPY emacs                            /root/.emacs
 COPY fill-column-indicator.el         /root/.emacs.d/lisp/
+COPY gdbinit                          /root/.gdbinit
 RUN tree /root/

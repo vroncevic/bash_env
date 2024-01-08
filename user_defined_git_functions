@@ -1,6 +1,6 @@
 #
 # @brief   User-defined functions for git env
-# @version ver.1.8.6
+# @version ver.1.9.6
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
 # @company None, free software to use 2022
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -23,6 +23,15 @@ function __git_helper {
 
 ### Clean up repo and fetch all changes (no arguments)
     clean_fetch_all
+
+### Check big changes (no arguments)
+    check_big_changes
+
+### Remove big file (file path)
+    remove_big_file
+
+### Show tags and sha1 (no arguments)
+    ref_tag
 
 ### Setup github ssh key
     add_git_ssh
@@ -65,14 +74,32 @@ function __clean_fetch_all {
 
 # Check commits with big changes
 function __check_big_changes {
-    local BATCH_CHECK='%(objecttype) %(objectname) %(objectsize) %(rest)'
+    local batch_check='%(objecttype) %(objectname) %(objectsize) %(rest)'
     git rev-list --objects --all | \
-    git cat-file --batch-check=${BATCH_CHECK} | \
+    git cat-file --batch-check=${batch_check} | \
     sed -n 's/^blob //p' | \
     sort --numeric-sort --key=2 | \
     cut -c 1-12,41- | \
     $(command -v gnumfmt || echo numfmt) \
     --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
     return 0
+}
+
+# Remove big file
+function __remove_big_file {
+    local file_path=$1
+    git filter-branch -f --index-filter \
+    "git rm --cached --ignore-unmatch ${file_path}" \
+    HEAD
+    rm -rf .git/refs/original/
+    git reflog expire --expire=now --all
+    git gc --prune=now
+    git gc --aggressive --prune=now
+    git push --all --prune --force
+}
+
+# Show tag and sha1
+function __ref_tag {
+    git show-ref --tags
 }
 
