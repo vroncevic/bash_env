@@ -39,8 +39,6 @@ COPY user_defined_git_functions       /root/.user_defined_git_functions
 COPY user_defined_doc_functions       /root/.user_defined_doc_functions
 COPY user_defined_rust_functions      /root/.user_defined_rust_functions
 COPY bash_aliases                     /root/.bash_aliases
-COPY bash_logout                      /root/.bash_logout
-COPY bash_login                       /root/.bash_login
 COPY bashrc                           /root/.bashrc
 COPY profile                          /root/.profile
 COPY bash_profile                     /root/.bash_profile

@@ -47,8 +47,6 @@ cp user_defined_git_functions       /home/${USERNAME}/.user_defined_git_function
 cp user_defined_doc_functions       /home/${USERNAME}/.user_defined_doc_functions
 cp user_defined_rust_functions      /home/${USERNAME}/.user_defined_rust_functions
 cp bash_aliases                     /home/${USERNAME}/.bash_aliases
-cp bash_logout                      /home/${USERNAME}/.bash_logout
-cp bash_login                       /home/${USERNAME}/.bash_login
 cp bashrc                           /home/${USERNAME}/.bashrc
 cp profile                          /home/${USERNAME}/.profile
 cp bash_profile                     /home/${USERNAME}/.bash_profile
@@ -72,8 +70,6 @@ cp user_defined_git_functions       /root/.user_defined_git_functions
 cp user_defined_doc_functions       /root/.user_defined_doc_functions
 cp user_defined_rust_functions      /root/.user_defined_rust_functions
 cp bash_aliases                     /root/.bash_aliases
-cp bash_logout                      /root/.bash_logout
-cp bash_login                       /root/.bash_login
 cp bashrc                           /root/.bashrc
 cp profile                          /root/.profile
 cp bash_profile                     /root/.bash_profile

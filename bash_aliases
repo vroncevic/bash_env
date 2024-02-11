@@ -20,7 +20,6 @@ if [ ${EUID} -eq 0 ]; then
     . /root/.user_defined_file_functions
     . /root/.user_defined_hw_functions
     . /root/.user_defined_net_functions
-    . /root/.user_defined_rs_functions
     . /root/.user_defined_py_functions
     . /root/.user_defined_perl_functions
     . /root/.user_defined_java_functions
@@ -35,7 +34,6 @@ else
     . /home/${USER}/.user_defined_file_functions
     . /home/${USER}/.user_defined_hw_functions
     . /home/${USER}/.user_defined_net_functions
-    . /home/${USER}/.user_defined_rs_functions
     . /home/${USER}/.user_defined_py_functions
     . /home/${USER}/.user_defined_perl_functions
     . /home/${USER}/.user_defined_java_functions
