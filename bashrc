@@ -1,8 +1,8 @@
 #
 # @brief   Bash rc
-# @version ver.1.9.6
+# @version ver.2.0.6
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
-# @company None, free software to use 2022
+# @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
@@ -101,6 +101,6 @@ if [ -d "/opt/pico/pico-sdk/" ]; then
 fi
 
 # set risc-v env
-if [ -d "/opt/MRS_Toolchain_Linux_x64_V1.90" ]; then
-	PATH="${PATH}:/opt/MRS_Toolchain_Linux_x64_V1.90/RISC-V_Embedded_GCC/bin"
+if [ -d "/opt/mrs_toolchain_v1.90" ]; then
+    PATH="${PATH}:/opt/mrs_toolchain_v1.90/risc_v_embedded_gcc12/bin"
 fi

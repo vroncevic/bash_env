@@ -57,6 +57,7 @@ To install **bash_env**, type the following
    cp user_defined_git_functions       /home/${USERNAME}/.user_defined_git_functions
    cp user_defined_doc_functions       /home/${USERNAME}/.user_defined_doc_functions
    cp user_defined_rust_functions      /home/${USERNAME}/.user_defined_rust_functions
+   cp user_defined_yocto_functions     /home/${USERNAME}/.user_defined_yocto_functions
    cp bash_aliases                     /home/${USERNAME}/.bash_aliases
    cp bash_logout                      /home/${USERNAME}/.bash_logout
    cp bash_login                       /home/${USERNAME}/.bash_login
@@ -81,6 +82,7 @@ To install **bash_env**, type the following
    cp user_defined_git_functions       /root/.user_defined_git_functions
    cp user_defined_doc_functions       /root/.user_defined_doc_functions
    cp user_defined_rust_functions      /root/.user_defined_rust_functions
+   cp user_defined_yocto_functions     /root/.user_defined_yocto_functions
    cp bash_aliases                     /root/.bash_aliases
    cp bash_logout                      /root/.bash_logout
    cp bash_login                       /root/.bash_login
@@ -130,28 +132,29 @@ Configuration files
 
 .. code-block:: bash
 
-   .user_defined_functions
-   .user_defined_str_functions
-   .user_defined_file_functions
-   .user_defined_hw_functions
-   .user_defined_net_functions
-   .user_defined_py_functions
-   .user_defined_perl_functions
-   .user_defined_java_functions
-   .user_defined_embedded_functions
-   .user_defined_web_functions
-   .user_defined_git_functions
-   .user_defined_doc_functions
-   .user_defined_rust_functions
-   .bash_aliases
-   .bash_logout
-   .bash_login
-   .bashrc
-   .profile
-   .bash_profile
-   .emacs
-   .emacs.d/lisp/fill-column-indicator.el
-   .gitconfig
+   user_defined_functions
+   user_defined_str_functions
+   user_defined_file_functions
+   user_defined_hw_functions
+   user_defined_net_functions
+   user_defined_py_functions
+   user_defined_perl_functions
+   user_defined_java_functions
+   user_defined_embedded_functions
+   user_defined_web_functions
+   user_defined_git_functions
+   user_defined_doc_functions
+   user_defined_rust_functions
+   user_defined_yocto_functions
+   bash_aliases
+   bash_logout
+   bash_login
+   bashrc
+   profile
+   bash_profile
+   emacs
+   emacs.d/lisp/fill-column-indicator.el
+   gitconfig
 
 Copyright and licence
 ----------------------
