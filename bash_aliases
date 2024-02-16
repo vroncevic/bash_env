@@ -1,8 +1,8 @@
 #
 # @brief   User-defined aliases
-# @version ver.1.9.6
+# @version ver.2.0.6
 # @date    Sun 13 Feb 2022 10:52:42 AM CET
-# @company None, free software to use 2022
+# @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
@@ -20,7 +20,6 @@ if [ ${EUID} -eq 0 ]; then
     . /root/.user_defined_file_functions
     . /root/.user_defined_hw_functions
     . /root/.user_defined_net_functions
-    . /root/.user_defined_rs_functions
     . /root/.user_defined_py_functions
     . /root/.user_defined_perl_functions
     . /root/.user_defined_java_functions
@@ -29,13 +28,13 @@ if [ ${EUID} -eq 0 ]; then
     . /root/.user_defined_git_functions
     . /root/.user_defined_doc_functions
     . /root/.user_defined_rust_functions
+    . /root/.user_defined_yocto_functions
 else
     . /home/${USER}/.user_defined_functions
     . /home/${USER}/.user_defined_str_functions
     . /home/${USER}/.user_defined_file_functions
     . /home/${USER}/.user_defined_hw_functions
     . /home/${USER}/.user_defined_net_functions
-    . /home/${USER}/.user_defined_rs_functions
     . /home/${USER}/.user_defined_py_functions
     . /home/${USER}/.user_defined_perl_functions
     . /home/${USER}/.user_defined_java_functions
@@ -44,6 +43,7 @@ else
     . /home/${USER}/.user_defined_git_functions
     . /home/${USER}/.user_defined_doc_functions
     . /home/${USER}/.user_defined_rust_functions
+    . /home/${USER}/.user_defined_yocto_functions
 fi
 
 # Global aliasses
@@ -147,6 +147,10 @@ alias clean_fetch_all="__clean_fetch_all"
 alias check_big_changes="__check_big_changes"
 alias remove_big_file="__remove_big_file $1"
 alias ref_tag="__ref_tag"
+
+# Yocto aliases
+alias yocto_heler="__yocto_helper"
+alias package_info="__package_info $1"
 
 # Doc aliases
 alias doc_helper="__doc_helper"
