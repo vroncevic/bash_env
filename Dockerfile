@@ -33,11 +33,14 @@ COPY user_defined_net_functions       /root/.user_defined_net_functions
 COPY user_defined_py_functions        /root/.user_defined_py_functions
 COPY user_defined_perl_functions      /root/.user_defined_perl_functions
 COPY user_defined_java_functions      /root/.user_defined_java_functions
-COPY user_defined_embedded_functions  /root/.user_defined_embedded_functions
+COPY user_defined_avr_functions       /root/.user_defined_avr_functions
+COPY user_defined_stm8_functions      /root/.user_defined_stm8_functions
 COPY user_defined_web_functions       /root/.user_defined_web_functions
 COPY user_defined_git_functions       /root/.user_defined_git_functions
+COPY user_defined_disk_functions      /root/.user_defined_disk_functions
 COPY user_defined_doc_functions       /root/.user_defined_doc_functions
 COPY user_defined_rust_functions      /root/.user_defined_rust_functions
+COPY user_defined_yocto_functions     /root/.user_defined_yocto_functions
 COPY bash_aliases                     /root/.bash_aliases
 COPY bashrc                           /root/.bashrc
 COPY profile                          /root/.profile

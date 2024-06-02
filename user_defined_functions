@@ -1,7 +1,7 @@
 #
 # @brief   Common user-defined functions
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 04:58:05 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -10,25 +10,25 @@
 function __common_helper {
     read -r -d '' END_HELP_TXT <<- END_HELP_TXT
 ### Check shared library (provide path of shared library)
-    so_version
+    so_version mylib.so
 
 ### List process details by name (provide process name)
-    list_processes
+    list_processes mytool
 
 ### Connect time for a specific user (provide username)
-    connect_time_user
+    connect_time_user duster
 
 ### Kill all processes for user (provide username)
-    kill_all_by_user
+    kill_all_by_user duster
 
 ### Archiving files: *.tar (provide path and filename)
-    archiving_tar
+    archiving_tar ../ *.png
 
 ### Archiving files: *.tar.gz (provide path, filename and arhive name)
-    archiving_gz
+    archiving_gz ../ *.png backup
 
 ### Backup sync (provide path)
-    backup_sync
+    backup_sync ../
 
 ### df with type of file systems (no arguments)
     df_type
@@ -42,119 +42,121 @@ END_HELP_TXT
 
 # Check shared library
 function __so_version {
-    local SO_FILE=$1
-    local NUMBER_OF_ARGUMENTS=$#
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: so_version <SHARED_LIBRARY>"
+    local number_of_arguments=$# so_file=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: so_version <shared_library>"
         return 127
     fi
-    if [[ ! -e ${SO_FILE} ]]; then
-        printf "%s\n" "Check shared library ${SO_FILE}"
+    if [[ ! -e ${so_file} ]]; then
+        printf "%s\n" "Check shared library ${so_file}"
         return 128
     fi
-    ldconfig -v ${SO_FILE}
+    ldconfig -v ${so_file}
+    return $?
 }
 
 # List process details by name
 function __list_processes {
-    local NUMBER_OF_ARGUMENTS=$# APP_NAME=$1
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
+    local number_of_arguments=$# app_name=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
         printf "%s\n" "Usage: list_processes <PROCESS_NAME>"
         return 127
     fi
-    eval "ps ax | grep ${APP_NAME}"
-    return 0
+    eval "ps ax | grep ${app_name}"
+    return $?
 }
 
 # Connect time for a specific user
 function __connect_time_user {
-    local NUMBER_OF_ARGUMENTS=$# USERNAME=$1 AC_PATH=$(which ac)
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: connect_time_user <USERNAME>"
+    local number_of_arguments=$# username=$1 ac_path=$(which ac)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: connect_time_user <username>"
         return 127
     fi
-    if [[ ! -e ${AC_PATH} ]]; then
+    if [[ ! -e ${ac_path} ]]; then
         printf "%s\n" "Check tool ac"
         printf "%s\n" "If missing, run apt-get install acct"
         return 128
     fi
-    eval "${AC_PATH} -d ${USERNAME}"
-    return 0
+    eval "${ac_path} -d ${username}"
+    return $?
 }
 
 # Kill all processes for user
 function __kill_all_by_user {
-    local NUMBER_OF_ARGUMENTS=$# USERNAME=$1
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: kill_all_by_user <USERNAME>"
+    local number_of_arguments=$# username=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: kill_all_by_user <username>"
         return 127
     fi
-    ps -ef | grep $USERNAME | awk '{ print $2 }' | xargs kill -9
-    return 0
+    ps -ef | grep $username | awk '{ print $2 }' | xargs kill -9
+    return $?
 }
 
 # Archiving files: *.tar
 function __archiving_tar {
-    local NUMBER_OF_ARGUMENTS=$# PATH=$1 FILENAME=$2
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 2 ]]; then
-        printf "%s\n" "Usage: archiving_tar <PATH> <FILENAME>"
+    local number_of_arguments=$# path=$1 filename=$2
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: archiving_tar <path> <filename>"
         return 127
     fi
-    if [[ ! -e ${PATH} ]]; then
-        printf "%s\n" "Check path [${PATH}]"
+    if [[ ! -e ${path} ]]; then
+        printf "%s\n" "Check path [${path}]"
         return 128
     fi
-    FIND_PIPE="find ${PATH} -type f -name ${FILENAME}"
-    XARGS_PIPE="xargs tar -cvf ${PATH}/${FILENAME}`date '+%d%m%Y'_archive.tar`"
-    eval "${FIND_PIPE} | ${XARGS_PIPE}"
-    return 0
+    find_pipe="find ${path} -type f -name ${filename}"
+    xargs_pipe="xargs tar -cvf ${path}/${filename}`date '+%d%m%Y'_archive.tar`"
+    eval "${find_pipe} | ${xargs_pipe}"
+    return $?
 }
 
 # Archiving files: *.tar.gz
 function __archiving_gz {
-    local NUMBER_OF_ARGUMENTS=$# PATH=$1 FILENAME=$2 ARCH=$3
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 3 ]]; then
-        printf "%s\n" "Usage: archiving_gz <PATH> <FILENAME> <ARCHIVE_NAME>"
+    local number_of_arguments=$# path=$1 filename=$2 arch=$3
+    if [[ ${number_of_arguments} -ne 3 ]]; then
+        printf "%s\n" "Usage: archiving_gz <path> <filename> <archive_name>"
         return 127
     fi
-    if [[ ! -e ${PATH} ]]; then
-        printf "%s\n" "Check path [${PATH}]"
+    if [[ ! -e ${path} ]]; then
+        printf "%s\n" "Check path [${path}]"
         return 128
     fi
-    FIND_PIPE="find ${PATH} -name ${FILENAME} -type f -print"
-    XARGS_PIPE="xargs tar -cvzf ${ARCH}.tar.gz"
-    eval "${FIND_PIPE} | ${XARGS_PIPE}"
-    return 0
+    local find_pipe="find ${path} -name ${filename} -type f -print"
+    local xargs_pipe="xargs tar -cvzf ${arch}.tar.gz"
+    eval "${find_pipe} | ${xargs_pipe}"
+    return $?
 }
 
 # Backup sync
 function __backup_sync {
-    local BACKUP_DESTINATION=$1
-    local NUMBER_OF_ARGUMENTS=$#
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
+    local number_of_arguments=$# backup_destination=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
         printf "%s\n" "Usage: backup_sync <BACKUP_DESTINATION_PATH>"
         return 127
     fi
-    if [[ ! -e ${BACKUP_DESTINATION} ]]; then
-        printf "%s\n" "Check destination path ${BACKUP_DESTINATION}"
+    if [[ ! -e ${backup_destination} ]]; then
+        printf "%s\n" "Check destination path ${backup_destination}"
         return 128
     fi
-    eval "rsync -avu --delete /data/ ${BACKUP_DESTINATION}"
-    return 0
+    eval "rsync -avu --delete /data/ ${backup_destination}"
+    return $?
 }
 
 # df with type of file systems
 function __df_type {
     df -TPh
+    return $?
 }
 
 # Watch activities
 function __watch_activities {
     watch -n 1 w -hs
+    return $?
 }
 
 # Watch time
 function __watch_time {
     watch "cat /proc/timer_list | sort -nr | head -n 20"
+    return $?
 }
 

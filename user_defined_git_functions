@@ -1,7 +1,7 @@
 #
 # @brief   User-defined functions for git env
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 05:05:00 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -28,7 +28,7 @@ function __git_helper {
     check_big_changes
 
 ### Remove big file (file path)
-    remove_big_file
+    remove_big_file ../backup.tar.bz2
 
 ### Show tags and sha1 (no arguments)
     ref_tag
@@ -44,32 +44,32 @@ END_HELP_TXT
 function __add_git_ssh {
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_ed25519
-    return 0
+    return $?
 }
 
 
 # List all conflicts
 function __list_conflicts {
     git ls-files -u | cut -f 2 | sort -u
-    return 0
+    return $?
 }
 
 # List file names with conflicts
-function __list_conflit_files {
+function __list_conflict_files {
     git diff --name-only --diff-filter=U
-    return 0
+    return $?
 }
 
 # List before clean up
 function __clean_list {
     git clean -nfd .
-    return 0
+    return $?
 }
 
 # Fetch all and clean repo
 function __clean_fetch_all {
     git fetch --all --prune
-    return 0
+    return $?
 }
 
 # Check commits with big changes
@@ -82,12 +82,16 @@ function __check_big_changes {
     cut -c 1-12,41- | \
     $(command -v gnumfmt || echo numfmt) \
     --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
-    return 0
+    return $?
 }
 
 # Remove big file
 function __remove_big_file {
-    local file_path=$1
+    local number_of_arguments=$# file_path=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: remove_big_file <file_path>"
+        return 127
+    fi
     git filter-branch -f --index-filter \
     "git rm --cached --ignore-unmatch ${file_path}" \
     HEAD
@@ -96,10 +100,12 @@ function __remove_big_file {
     git gc --prune=now
     git gc --aggressive --prune=now
     git push --all --prune --force
+    return $?
 }
 
 # Show tag and sha1
 function __ref_tag {
     git show-ref --tags
+    return $?
 }
 

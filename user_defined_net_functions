@@ -1,7 +1,7 @@
 #
 # @brief   User-defined functions for network env
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 05:19:06 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -13,13 +13,13 @@ function __net_helper {
     check_wifi_card
 
 ### Check listen port (provide port number)
-    listen_port
+    listen_port 52052
 
 ### Check sockets (no arguments)
     all_sockets
 
 ### Destroy VNC session (provide display port number)
-    vnc_kill
+    vnc_kill 1
 
 END_HELP_TXT
     echo "$END_HELP_TXT"
@@ -27,58 +27,58 @@ END_HELP_TXT
 
 # Check WiFi card
 function __check_wifi_card {
-    local LSPCI_PATH=$(which lspci)
-    if [[ ! -e ${LSPCI_PATH} ]]; then
+    local lspci_path=$(which lspci)
+    if [[ ! -e ${lspci_path} ]]; then
         printf "%s\n" "Check executable lspci"
         printf "%s\n" "If missing, run apt-get install pciutils"
         return 127
     fi
-    eval "${LSPCI_PATH} -vnn | grep Network"
-    return 0
+    eval "${lspci_path} -vnn | grep Network"
+    return $?
 }
 
 # Check listen port
 function __listen_port {
-    local NUMBER_OF_ARGUMENTS=$# NETSTAT_PATH=$(which netstat) PORT_NUMBER=$1
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: listen_port <PORT_NUMBER>"
+    local number_of_arguments=$# netstat_path=$(which netstat) port_number=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: listen_port <port_number>"
         return 127
     fi
-    if [[ ! -e ${NETSTAT_PATH} ]]; then
+    if [[ ! -e ${netstat_path} ]]; then
         printf "%s\n" "Check executable netstat"
         printf "%s\n" "If missing, run apt-get install net-tools"
         return 128
     fi
-    eval "${NETSTAT_PATH} -tlpdn | grep ${PORT_NUMBER}"
-    return 0
+    eval "${netstat_path} -tlpdn | grep ${port_number}"
+    return $?
 }
 
 # Check sockets
 function __all_sockets {
-    local NETSTAT_PATH=$(which netstat)
-    if [[ ! -e ${NETSTAT_PATH} ]]; then
+    local netstat_path=$(which netstat)
+    if [[ ! -e ${netstat_path} ]]; then
         printf "%s\n" "Check executable netstat"
         printf "%s\n" "If missing, run apt-get install net-tools"
         return 127
     fi
-    eval "${NETSTAT_PATH} -a"
-    return 0
+    eval "${netstat_path} -a"
+    return $?
 }
 
 # Destroy VNC session (provide display port number)
 function __vnc_kill {
-    local NUMBER_OF_ARGUMENTS=$# VNCSERVER_PATH=$(which vncserver)
-    local DISPLAY_NUMBER=$1
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: vnc_kill <DISPLAY_NUMBER>"
+    local number_of_arguments=$# vncserver_path=$(which vncserver)
+    local display_number=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: vnc_kill <display_number>"
         return 127
     fi
-    if [[ ! -e ${VNCSERVER_PATH} ]]; then
+    if [[ ! -e ${vncserver_path} ]]; then
         printf "%s\n" "Check executable vncserver"
         printf "%s\n" "If missing, run apt-get install tightvncserver"
         return 128
     fi
-    eval "${VNCSERVER_PATH} -kill :${DISPLAY_NUMBER}"
-    return 0
+    eval "${vncserver_path} -kill :${display_number}"
+    return $?
 }
 

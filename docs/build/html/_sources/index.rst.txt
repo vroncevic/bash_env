@@ -52,22 +52,22 @@ To install **bash_env**, type the following
    cp user_defined_py_functions        /home/${USERNAME}/.user_defined_py_functions
    cp user_defined_perl_functions      /home/${USERNAME}/.user_defined_perl_functions
    cp user_defined_java_functions      /home/${USERNAME}/.user_defined_java_functions
-   cp user_defined_embedded_functions  /home/${USERNAME}/.user_defined_embedded_functions
+   cp user_defined_avr_functions       /home/${USERNAME}/.user_defined_avr_functions
+   cp user_defined_stm8_functions      /home/${USERNAME}/.user_defined_stm8_functions
    cp user_defined_web_functions       /home/${USERNAME}/.user_defined_web_functions
    cp user_defined_git_functions       /home/${USERNAME}/.user_defined_git_functions
    cp user_defined_doc_functions       /home/${USERNAME}/.user_defined_doc_functions
    cp user_defined_rust_functions      /home/${USERNAME}/.user_defined_rust_functions
    cp user_defined_yocto_functions     /home/${USERNAME}/.user_defined_yocto_functions
    cp bash_aliases                     /home/${USERNAME}/.bash_aliases
-   cp bash_logout                      /home/${USERNAME}/.bash_logout
-   cp bash_login                       /home/${USERNAME}/.bash_login
    cp bashrc                           /home/${USERNAME}/.bashrc
    cp profile                          /home/${USERNAME}/.profile
    cp bash_profile                     /home/${USERNAME}/.bash_profile
    cp emacs                            /home/${USERNAME}/.emacs
    cp fill-column-indicator.el         /home/${USERNAME}/.emacs.d/lisp/
    cp gitconfig                        /home/${USERNAME}/.gitconfig
-
+   cp gdbinit                          /home/${USERNAME}/.gdbinit
+   
    # root user
    cp user_defined_functions           /root/.user_defined_functions
    cp user_defined_str_functions       /root/.user_defined_str_functions
@@ -77,20 +77,21 @@ To install **bash_env**, type the following
    cp user_defined_py_functions        /root/.user_defined_py_functions
    cp user_defined_perl_functions      /root/.user_defined_perl_functions
    cp user_defined_java_functions      /root/.user_defined_java_functions
-   cp user_defined_embedded_functions  /root/.user_defined_embedded_functions
+   cp user_defined_avr_functions       /root/.user_defined_avr_functions
+   cp user_defined_stm8_functions      /root/.user_defined_stm8_functions
    cp user_defined_web_functions       /root/.user_defined_web_functions
    cp user_defined_git_functions       /root/.user_defined_git_functions
+   cp user_defined_disk_functions      /root/.user_defined_disk_functions
    cp user_defined_doc_functions       /root/.user_defined_doc_functions
    cp user_defined_rust_functions      /root/.user_defined_rust_functions
    cp user_defined_yocto_functions     /root/.user_defined_yocto_functions
    cp bash_aliases                     /root/.bash_aliases
-   cp bash_logout                      /root/.bash_logout
-   cp bash_login                       /root/.bash_login
    cp bashrc                           /root/.bashrc
    cp profile                          /root/.profile
    cp bash_profile                     /root/.bash_profile
    cp emacs                            /root/.emacs
    cp fill-column-indicator.el         /root/.emacs.d/lisp/
+   cp gdbinit                          /root/.gdbinit
 
 Updated default locale
 
@@ -140,9 +141,11 @@ Configuration files
    user_defined_py_functions
    user_defined_perl_functions
    user_defined_java_functions
-   user_defined_embedded_functions
+   user_defined_avr_functions
+   user_defined_stm8_functions
    user_defined_web_functions
    user_defined_git_functions
+   user_defined_disk_functions
    user_defined_doc_functions
    user_defined_rust_functions
    user_defined_yocto_functions
@@ -155,6 +158,7 @@ Configuration files
    emacs
    emacs.d/lisp/fill-column-indicator.el
    gitconfig
+   gdbinit
 
 Copyright and licence
 ----------------------

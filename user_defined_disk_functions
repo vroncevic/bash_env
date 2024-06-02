@@ -1,0 +1,108 @@
+#
+# @brief   User-defined functions for disk operations
+# @version ver.2.1.6
+# @date    Sun Jun  2 10:24:25 PM CEST 2024
+# @company None, free software to use 2024
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
+# Disk helper
+function __disk_helper {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### Check drive (provide mount point and mapper)
+    check_drive /data edce636f-a920-42f2-10d0-55edebe56769
+    
+### Mount drive (provide mount point and mapper)
+    mount_data m328p /data edce636f-a920-42f2-10d0-55edebe56769
+    
+### Check bad blocks for drive (provide device path)
+    check_bad_blocks /dev/sda
+
+### Perform disk probe (provide device path)
+    drive_probe /dev/sda
+
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
+# Check encrypted drive
+function __check_drive {
+    local number_of_arguments=$# mount_path=$1 mapper=$2
+    local dmsetup_path=$(which dmsetup)
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: check_drive <mount_path> <mapper>"
+        return 127
+    fi
+    if [[ ! -e ${dmsetup_path} ]]; then
+        printf "%s\n" "Check is dmsetup installed"
+        printf "%s\n" "If missing, run apt-get install dmsetup"
+        return 128
+    fi
+    if [ -d "${mount_path}" ]; then
+        printf "%s\n" "Data mount point present"
+        return 0
+    else
+        printf "%s\n" "Missing mount point ${mount_path}"
+        return 129
+    fi
+    if [ -e "/dev/mapper/${mapper}" ]; then
+        printf "%s\n" "Data encrypted disk present"
+        return 0
+    fi
+    printf "%s\n\n" "Data encrypted disk is not present"
+    eval "dmsetup ls"
+    return 130
+}
+
+# Mount encrypted drive
+function __mount_data {
+    local number_of_arguments=$# mount_path=$1 mapper=$2
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: mount_data <mount_path> <mapper>"
+        return 127
+    fi
+    __check_device ${mount_path} ${mapper}
+    local status=$?
+    if [ $status -eq 0 ]; then
+        eval "mount -t ext4 /dev/mapper/${mapper} ${mount_path}"
+        return $?
+    fi
+    printf "%s\n" "Failed to mount data drive"
+    printf "%s\n" "Device /dev/mapper/${mapper}"
+    printf "%s\n" "Mount point ${mount_path}"
+    return 128
+}
+
+# Check bad blocks for drive
+function __check_bad_blocks {
+    local number_of_arguments=$# device_path=$1
+    local badblocks_path=$(which badblocks)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: check_bad_blocks <device_path>"
+        return 127
+    fi
+    if [[ ! -e ${badblocks_path} ]]; then
+        printf "%s\n" "Check is badblocks installed"
+        printf "%s\n" "If missing, run apt-get install badblocks"
+        return 128
+    fi
+    badblocks -w -s -o error.log ${device_path}
+    return $?
+}
+
+# Perform disk probe
+function __drive_probe {
+    local number_of_arguments=$# device_path=$1
+    local f3probe_path=$(which f3probe)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: check_bad_blocks <device_path>"
+        return 127
+    fi
+    if [[ ! -e ${f3probe_path} ]]; then
+        printf "%s\n" "Check is f3probe installed"
+        printf "%s\n" "If missing, run apt-get install f3probe"
+        return 128
+    fi
+    f3probe --destructive --time-ops ${device_path}
+    return $?
+}

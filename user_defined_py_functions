@@ -1,7 +1,7 @@
 #
 # @brief   User-defined functions for python env
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 05:22:56 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -26,26 +26,27 @@ END_HELP_TXT
 function __pyclean {
     find . -type f -name "*.py[co]" -delete
     find . -type d -name "__pycache__" -delete
-    return 0
+    return $?
 }
 
 # Run Python web server
 function __http {
     python -m SimpleHTTPServer
+    return $?
 }
 
 # Decompile python bytecode
 function __decopile_py_bytecode {
-    local NUMBER_OF_ARGUMENTS=$# PYC_FILE=$1
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: decopile_py_bytecode <PYC_FILE>"
+    local number_of_arguments=$# pyc_file=$1
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: decopile_py_bytecode <pyc_file>"
         return 127
     fi
-    if [[ ! -e ${PYC_FILE} ]]; then
-        printf "%s\n" "Check file ${PYC_FILE}"
+    if [[ ! -e ${pyc_file} ]]; then
+        printf "%s\n" "Check file ${pyc_file}"
         return 128
     fi
-    eval "python -m unpyclib.application -Dq ${PYC_FILE}"
-    return 0
+    eval "python -m unpyclib.application -Dq ${pyc_file}"
+    return $?
 }
 

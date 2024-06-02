@@ -1,7 +1,7 @@
 #
 # @brief   User-defined functions for java env
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 05:17:18 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -10,7 +10,7 @@
 function __java_helper {
     read -r -d '' END_HELP_TXT <<- END_HELP_TXT
 ### Set java (provide path of java executable)
-    set_java
+    set_java /usr/lib/jvm/java-21-openjdk-amd64/bin/javac
 
 ### Update java (no arguments)
     update_java
@@ -21,32 +21,32 @@ END_HELP_TXT
 
 # Set java
 function __set_java {
-    local NUMBER_OF_ARGUMENTS=$# JAVA_EXEC=$1
-    local UA_PATH=$(which update-alternatives)
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: set_java <PATH>"
+    local number_of_arguments=$# java_exec=$1
+    local ua_path=$(which update-alternatives)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: set_java <java_exec_path>"
         return 127
     fi
-    if [[ ! -e ${UA_PATH} ]]; then
+    if [[ ! -e ${ua_path} ]]; then
         printf "%s\n" "Check executable update-alternatives"
         return 128
     fi
-    if [[ ! -e ${JAVA_EXEC} ]];then
+    if [[ ! -e ${java_exec} ]];then
         printf "%s\n" "Check executable java"
         return 129
     fi
-    eval "${UA_PATH} --install /usr/bin/java java ${JAVA_EXEC} 1"
-    return 0
+    eval "${ua_path} --install /usr/bin/java java ${java_exec} 1"
+    return $?
 }
 
 # Update java
 function __update_java {
-    local UA_PATH=$(which update-alternatives)
-    if [[ ! -e ${UA_PATH} ]]; then
+    local ua_path=$(which update-alternatives)
+    if [[ ! -e ${ua_path} ]]; then
         printf "%s\n" "Check executable update-alternatives"
         return 127
     fi
-    eval "${UA_PATH} --config java"
-    return 0
+    eval "${ua_path} --config java"
+    return $?
 }
 

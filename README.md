@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/bash_env_logo.png" width="25%">
-
 # bash_env (Linux BASH/Emacs Environment files)
+
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/bash_env/dev/docs/bash_env_logo.png" width="25%">
 
 Linux BASH/Emacs environment configuration files.
 
@@ -41,7 +41,8 @@ cp user_defined_net_functions       /home/${USERNAME}/.user_defined_net_function
 cp user_defined_py_functions        /home/${USERNAME}/.user_defined_py_functions
 cp user_defined_perl_functions      /home/${USERNAME}/.user_defined_perl_functions
 cp user_defined_java_functions      /home/${USERNAME}/.user_defined_java_functions
-cp user_defined_embedded_functions  /home/${USERNAME}/.user_defined_embedded_functions
+cp user_defined_avr_functions       /home/${USERNAME}/.user_defined_avr_functions
+cp user_defined_stm8_functions      /home/${USERNAME}/.user_defined_stm8_functions
 cp user_defined_web_functions       /home/${USERNAME}/.user_defined_web_functions
 cp user_defined_git_functions       /home/${USERNAME}/.user_defined_git_functions
 cp user_defined_doc_functions       /home/${USERNAME}/.user_defined_doc_functions
@@ -65,9 +66,11 @@ cp user_defined_net_functions       /root/.user_defined_net_functions
 cp user_defined_py_functions        /root/.user_defined_py_functions
 cp user_defined_perl_functions      /root/.user_defined_perl_functions
 cp user_defined_java_functions      /root/.user_defined_java_functions
-cp user_defined_embedded_functions  /root/.user_defined_embedded_functions
+cp user_defined_avr_functions       /root/.user_defined_avr_functions
+cp user_defined_stm8_functions      /root/.user_defined_stm8_functions
 cp user_defined_web_functions       /root/.user_defined_web_functions
 cp user_defined_git_functions       /root/.user_defined_git_functions
+cp user_defined_disk_functions      /root/.user_defined_disk_functions
 cp user_defined_doc_functions       /root/.user_defined_doc_functions
 cp user_defined_rust_functions      /root/.user_defined_rust_functions
 cp user_defined_yocto_functions     /root/.user_defined_yocto_functions

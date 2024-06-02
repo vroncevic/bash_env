@@ -1,0 +1,155 @@
+#
+# @brief   User-defined functions for AVR env
+# @version ver.2.1.6
+# @date    Sun Jun  2 03:32:56 PM CEST 2024
+# @company None, free software to use 2024
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
+# AVR helper
+function __avr_helper {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### Check AVR board info (provide mcu)
+    avr_info m328p
+    
+### Flashing AVR mcu fuse bits using avrdude (provide mcu/efuse/hfuse/lfuse)
+    avr_flash_fuse m328p ff d9 fd
+    
+### Flashing AVR mcu using avrdude (provide mcu and hex file path)
+    avr_flash m328p myproject.hex
+
+### Generate Intel hex file from elf (provide ELF path and hex name)
+    avr_gen_hex myproject.elf myproject.hex
+
+### One file project compile (provide C module and mcu)
+    avr_one_file_project_compile myproject.c m328p
+
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
+AVR_ENV="gcc-avr binutils-avr avr-libc gdb-avr avrdude"
+AVR_PROGRAMMER="avrispmkII"
+STM8_ENV="sdcc sdcc-doc sdcc-libraries stm8flash"
+
+# Read board info
+function __avr_info {
+    local number_of_arguments=$# mcu=$1
+    local avrdude_path=$(which avrdude)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: avr_info <mcu>"
+        return 127
+    fi
+    if [[ ! -e ${avrdude_path} ]]; then
+        printf "%s\n" "Check is avrdude installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 128
+    fi
+    eval "${avrdude_path} -c ${AVR_PROGRAMMER} -p ${mcu}"
+    return $?
+}
+
+# Flashing AVR mcus fuse bits using avrdude
+function __avr_flash_fuse {
+    local number_of_arguments=$# mcu=$1 efuse=$2 hfuse=$3 lfuse=$4
+    local avrdude_path=$(which avrdude)
+    local num_regex='^[0-9A-Fa-f]{2}'
+    if [[ ${number_of_arguments} -ne 4 ]]; then
+        printf "%s\n" "Usage: avr_flash_fuse <mcu> <efuse> <hfuse> <lfuse>"
+        return 127
+    fi
+    if [[ ! -e ${avrdude_path} ]]; then
+        printf "%s\n" "Check is avrdude installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 128
+    fi
+    if ! [[ $efuse =~ $num_regex ]]; then
+        printf "%s\n" "<efuse> should be in HEX format"
+        return 129
+    fi
+    if ! [[ $hfuse =~ $num_regex ]]; then
+        printf "%s\n" "<hfuse> should be in HEX format"
+        return 130
+    fi
+    if ! [[ $lfuse =~ $num_regex ]]; then
+        printf "%s\n" "<lfuse> should be in HEX format"
+        return 131
+    fi
+    local pefuse="-U efuse:w:${efuse}:m"
+    local phfuse="-U hfuse:w:${hfuse}:m"
+    local plfuse="-U lfuse:w:${lfuse}:m"
+    local fuses="${pefuse} ${phfuse} ${plfuse}"
+    eval "${avrdude_path} -c ${AVR_PROGRAMMER} -p ${mcu} ${fuses}"
+    return $?
+}
+
+# Flashing AVR mcus using avrdude
+function __avr_flash {
+    local number_of_arguments=$# mcu=$1 hex_path=$2
+    local avrdude_path=$(which avrdude)
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: avr_flash <mcu> <hex_path>"
+        return 127
+    fi
+    if [[ ! -e ${avrdude_path} ]]; then
+        printf "%s\n" "Check is avrdude installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 128
+    fi
+    if [[ ! -e ${hex_path} ]]; then
+         printf "%s\n" "Hex file ${hex_path} exists ?"
+         return 129
+    fi
+    printf "%s\n" "Using by default programmer ${AVR_PROGRAMMER}"
+    eval "${avrdude_path} -c ${AVR_PROGRAMMER} -p ${mcu} -U flash:w:${hex_path}"
+    return $?
+}
+
+# Generate Intel Hex file from elf
+function __avr_gen_hex {
+    local number_of_arguments=$# elf_file=$1 hex_file=$2
+    local avr_objcopy_path=$(which avr-objcopy)
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: avr_gen_hex <elf_file> <hex_file>"
+        return 127
+    fi
+    if [[ ! -e ${avr_objcopy_path} ]]; then
+        printf "%s\n" "Check is AVR toolchain installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 128
+    fi
+    eval "${avr_objcopy_path} -O ihex ${elf_file} ${hex_file}"
+    return $?
+}
+
+# One file project compile
+function __avr_one_file_project_compile {
+    local number_of_arguments=$# file_name=$1 mcu=$2
+    local avr_gcc_path=$(which avr-gcc)
+    local avr_objcopy_path=$(which avr-objcopy)
+    local avr_size_path=$(which avr-size)
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: avr_one_file_project_compile <C_FILE> <mcu>"
+        return 127
+    fi
+    if [[ ! -e ${avr_gcc_path} ]]; then
+        printf "%s\n" "Check is AVR toolchain installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 128
+    fi
+    eval "${avr_gcc_path} -g -Os -mmcu=${mcu} -c ${file_name}"
+    eval "${avr_gcc_path} -g -mmcu=${mcu} -o ${file_name}.elf ${file_name}.o"
+    if [[ ! -e ${avr_objcopy_path} ]]; then
+        printf "%s\n" "Check is AVR toolchain installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 129
+    fi
+    eval "${avr_objcopy_path} -O ihex ${file_name}.elf ${file_name}.hex"
+    if [[ ! -e ${avr_size_path} ]]; then
+        printf "%s\n" "Check is AVR toolchain installed"
+        printf "%s\n" "If missing, run apt-get install ${AVR_ENV}"
+        return 129
+    fi
+    eval "${avr_size_path} --format=avr --mcu=${mcu} ${file_name}.elf"
+    return $?
+}

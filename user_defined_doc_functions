@@ -1,7 +1,7 @@
 #
 # @brief   User-defined functions for doc env
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 03:50:20 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -13,7 +13,7 @@ function __doc_helper {
     sphinx_create
 
 ### Generation sphinx API doc (provide py package path)
-    sphinx_doc
+    sphinx_doc ../
 
 ### Generation doxygen configuration (no arguments)
     doxygen_create
@@ -24,45 +24,45 @@ END_HELP_TXT
 
 # Create sphinx project
 function __sphinx_create {
-    local SPHINX_PATH=$(which sphinx-quickstart)
-    if [[ ! -e ${SPHINX_PATH} ]]; then
+    local sphinx_path=$(which sphinx-quickstart)
+    if [[ ! -e ${sphinx_path} ]]; then
         printf "%s\n" "Check is sphinx installed"
         printf "%s\n" "If missing, run apt install python3-sphinx"
         return 127
     fi
     sphinx-quickstart
-    return 0
+    return $?
 }
 
 # Generation sphinx API doc
 function __sphinx_doc {
-    local NUMBER_OF_ARGUMENTS=$# PY_PACKAGE=$1
-    local SPHINX_APIDOC_PATH=$(which sphinx-apidoc)
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: sphinx_doc <PY_PACKAGE>"
+    local number_of_arguments=$# py_package=$1
+    local sphinx_apidoc_path=$(which sphinx-apidoc)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: sphinx_doc <py_package>"
         return 127
     fi
-    if [[ ! -e ${SPHINX_APIDOC_PATH} ]]; then
+    if [[ ! -e ${sphinx_apidoc_path} ]]; then
         printf "%s\n" "Check is sphinx installed"
         printf "%s\n" "If missing, run apt install python3-sphinx"
         return 128
     fi
-    if [[ ! -d "../${PY_PACKAGE}" ]]; then
-        printf "%s\n" "Check py package ${PY_PACKAGE}"
+    if [[ ! -d "../${py_package}" ]]; then
+        printf "%s\n" "Check py package ${py_package}"
         return 129
     fi
-    eval "${SPHINX_APIDOC_PATH} -P -f -e -a -o source/ ../${PY_PACKAGE}/"
-    return 0
+    eval "${sphinx_apidoc_path} -P -f -e -a -o source/ ../${py_package}/"
+    return $?
 }
 
 # Generation of Doxyfile
 function __doxygen_create {
-    local DOXYFILE="Doxyfile"
-    local DOXYGEN_PATH=$(which doxygen)
-    if [[ ! -e ${DOXYGEN_PATH} ]]; then
+    local doxyfile="Doxyfile" doxygen_path=$(which doxygen)
+    if [[ ! -e ${doxygen_path} ]]; then
         printf "%s\n" "Check is doxygen installed"
+        printf "%s\n" "If missing, run apt install doxygen"
         return 127
     fi
-    eval "${DOXYGEN_PATH} -g $DOXYFILE"
-    return 0
+    eval "${doxygen_path} -g ${doxyfile}"
+    return $?
 }
