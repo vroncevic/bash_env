@@ -1,7 +1,7 @@
 #
 # @brief   User-defined functions for Yocto env
-# @version ver.2.0.6
-# @date    Sun Feb 11 01:11:47 PM CET 2024
+# @version ver.2.1.6
+# @date    Sun Jun  2 05:28:05 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -9,41 +9,114 @@
 # Yocto helper
 function __yocto_helper {
     read -r -d '' END_HELP_TXT <<- END_HELP_TXT
-### Get package info (package name)
-    package_info
+### Get package info (provide package name)
+    package_info virtual/kernel
+
+### List image distro features (provide image name)
+    list_distro_features development_image
+
+### List recipe tasks (provide recipe name)
+    list_recipe_tasks virtual/kernel
+
+### List native recipes (no arguments)
+    list_native_recipes
+
+### List image SDK depends (provide image name)
+    list_image_sdk_depends development_image
 
 END_HELP_TXT
     echo "$END_HELP_TXT"
 }
 
+# Check package info
 function __package_info {
-    local BB_PATH=$(which bitbake)
-    local NUMBER_OF_ARGUMENTS=$#
-    local PN=$1
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: package_info <PKG_NAME>"
+    local number_of_arguments=$# pn=$1
+    local bb_path=$(which bitbake)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: package_info <package_name>"
         return 127
     fi
-    if [[ ! -e ${BB_PATH} ]]; then
-        printf "%s\n" "Check is Yocto env sourced"
+    if [[ ! -e ${bb_path} ]]; then
+        printf "%s\n" "Source Yocto env"
         exit 128
     fi
     printf "%s\n" "Full package designator"
-    bitbake -e ${PN} | grep ^P=
+    bitbake -e ${pn} | grep ^P=
     printf "%s\n" "Package version"
-    bitbake -e ${PN} | grep ^PV=
+    bitbake -e ${pn} | grep ^PV=
     printf "%s\n" "Package source location"
-    bitbake -e ${PN} | grep ^S=
+    bitbake -e ${pn} | grep ^S=
     printf "%s\n" "Package build location"
-    bitbake -e ${PN} | grep ^B=
+    bitbake -e ${pn} | grep ^B=
     printf "%s\n" "Package deploy location"
-    bitbake -e ${PN} | grep ^D=
+    bitbake -e ${pn} | grep ^D=
     printf "%s\n" "Package Makefile arugments"
-    bitbake -e ${PN} | grep ^EXTRA_OEMAKE=
+    bitbake -e ${pn} | grep ^EXTRA_OEMAKE=
     printf "%s\n" "Package CMake arguments"
-    bitbake -e ${PN} | grep ^EXTRA_OECMAKE=
+    bitbake -e ${pn} | grep ^EXTRA_OECMAKE=
     printf "%s\n" "Package autoreconfigure arguments"
-    bitbake -e ${PN} | grep ^EXTRA_AUTORECONF=
+    bitbake -e ${pn} | grep ^EXTRA_AUTORECONF=
     printf "%s\n" "Package configure arguments"
-    bitbake -e ${PN} | grep ^EXTRA_OECONF=
+    bitbake -e ${pn} | grep ^EXTRA_OECONF=
+    return $?
+}
+
+# List distro features for image
+function __list_distro_features {
+    local number_of_arguments=$# image=$1
+    local bb_path=$(which bitbake)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: list_distro_features <image>"
+        return 127
+    fi
+    if [[ ! -e ${bb_path} ]]; then
+        printf "%s\n" "Source Yocto env"
+        exit 128
+    fi
+    bitbake -e ${image} | grep "^DISTRO_FEATURES"
+    return $?
+}
+
+# List recipe tasks
+function __list_recipe_tasks {
+    local number_of_arguments=$# recipe=$1
+    local bb_path=$(which bitbake)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: list_recipe_tasks <recipe>"
+        return 127
+    fi
+    if [[ ! -e ${bb_path} ]]; then
+        printf "%s\n" "Source Yocto env"
+        exit 128
+    fi
+    bitbake ${recipe} -c listtasks
+    return $?
+}
+
+# List native recipes
+function __list_native_recipes {
+    local bb_layers_path=$(which bitbake-layers)
+    if [[ ! -e ${bb_layers_path} ]]; then
+        printf "%s\n" "Source Yocto env"
+        exit 128
+    fi
+    bitbake-layers show-recipes | grep "native:"
+    return $?
+}
+
+# List image SDK depends
+function __list_image_sdk_depends {
+    local number_of_arguments=$# image=$1
+    local bb_path=$(which bitbake)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: list_image_sdk_depends <image>"
+        return 127
+    fi
+    if [[ ! -e ${bb_path} ]]; then
+        printf "%s\n" "Source Yocto env"
+        exit 128
+    fi
+    bitbake -g ${image} -c populate_sdk && \
+    cat pn-buildlist | sort | uniq | bitbake -s > dependencies
+    return $?
 }

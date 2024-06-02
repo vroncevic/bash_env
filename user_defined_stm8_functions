@@ -1,0 +1,42 @@
+#
+# @brief   User-defined functions for STM8 env
+# @version ver.2.1.6
+# @date    Sun Jun  2 03:42:07 PM CEST 2024
+# @company None, free software to use 2024
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+
+# STM8 helper
+function __stm8_helper {
+    read -r -d '' END_HELP_TXT <<- END_HELP_TXT
+### Flashing STM8 device (provide mcu and hex file path)
+    stm8flash_hex stm8s003f3 myproject.hex
+
+END_HELP_TXT
+    echo "$END_HELP_TXT"
+}
+
+STM8_ENV="sdcc sdcc-doc sdcc-libraries stm8flash"
+STM8_PROGRAMMER="stlinkv2"
+
+# Flash STM8 device
+function __stm8flash_hex {
+    local number_of_arguments=$# mcu=$1 hex_file=$2
+    local stm8flash_path=$(which stm8flash)
+    if [[ ${number_of_arguments} -ne 2 ]]; then
+        printf "%s\n" "Usage: stm8flash_hex <mcu> <hex_file>"
+        return 127
+    fi
+    if [[ ! -e ${stm8flash_path} ]]; then
+        printf "%s\n" "Check is stm8flash installed"
+        printf "%s\n" "If missing, run apt-get install ${STM8_ENV}"
+        return 128
+    fi
+    if [[ ! -e "${hex_file}" ]]; then
+        printf "%s\n" "Check hex file"
+        return 129
+    fi
+    local flash_params="-c ${STM8_PROGRAMMER} -p ${mcu} -s flash"
+    eval "${stm8flash_path} ${flash_params} -w ${hex_file}"
+    return $?
+}

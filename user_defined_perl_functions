@@ -1,7 +1,7 @@
 #
 # @brief   User-defined functions for perl env
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 05:21:56 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -10,7 +10,7 @@
 function __pl_helper {
     read -r -d '' END_HELP_TXT <<- END_HELP_TXT
 ### Check perl module info (provide perl package module)
-    check_perl_module
+    check_perl_module utils
 
 END_HELP_TXT
     echo "$END_HELP_TXT"
@@ -18,17 +18,17 @@ END_HELP_TXT
 
 # Check perl module info
 function __check_perl_module {
-    local NUMBER_OF_ARGUMENTS=$# PERL_MODULE=$1 CPAN_PATH=$(which cpan)
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 1 ]]; then
-        printf "%s\n" "Usage: check_perl_module <PERL_MODULE>"
+    local number_of_arguments=$# perl_module=$1 cpan_path=$(which cpan)
+    if [[ ${number_of_arguments} -ne 1 ]]; then
+        printf "%s\n" "Usage: check_perl_module <perl_module>"
         return 127
     fi
-    if [[ ! -e ${CPAN_PATH} ]]; then
+    if [[ ! -e ${cpan_path} ]]; then
         printf "%s\n" "Check executable cpan"
         printf "%s\n" "If missing, run apt-get install libpath-tiny-Perl"
         return 128
     fi
-    eval "${CPAN_PATH} -D ${PERL_MODULE}"
-    return 0
+    eval "${cpan_path} -D ${perl_module}"
+    return $?
 }
 

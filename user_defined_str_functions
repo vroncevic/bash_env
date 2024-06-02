@@ -1,7 +1,7 @@
 #
 # @brief   User-defined functions for string operations
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 05:25:00 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -18,13 +18,13 @@ END_HELP_TXT
 
 # Replace string
 function __replace {
-    local NUMBER_OF_ARGUMENTS=$# OLD_STR=$1 NEW_STR=$2 FILES=$3
-    if [[ ${NUMBER_OF_ARGUMENTS} -ne 3 ]]; then
-        printf "%s\n" "Usage: replace <OLD_STR> <NEW_STR> <FILE_EXSTENSION>"
+    local number_of_arguments=$# old_str=$1 new_str=$2 files=$3
+    if [[ ${number_of_arguments} -ne 3 ]]; then
+        printf "%s\n" "Usage: replace <old_str> <new_str> <file_extension>"
         return 127
     fi
-    local EXEC_PARAMS="sed -i 's/${OLD_STR}/${NEW_STR}/g' {} +"
-    eval "find . -type f -name \"*.${FILES}\" -exec ${EXEC_PARAMS}"
-    return 0
+    local EXEC_PARAMS="sed -i 's/${old_str}/${new_str}/g' {} +"
+    eval "find . -type f -name \"*.${files}\" -exec ${EXEC_PARAMS}"
+    return $?
 }
 

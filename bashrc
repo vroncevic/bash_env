@@ -1,7 +1,7 @@
 #
 # @brief   Bash rc
-# @version ver.2.0.6
-# @date    Sun 13 Feb 2022 10:52:42 AM CET
+# @version ver.2.1.6
+# @date    Sun Jun  2 05:44:08 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -87,12 +87,12 @@ fi
 
 # set PATH for flutter env
 if [ -d "$HOME/flutter/" ]; then
-        PATH="${PATH}:${HOME}/flutter/bin"
+    PATH="${PATH}:${HOME}/flutter/bin"
 fi
 
 # set PATH for pico2040 generator tool
 if [ -d "$HOME/bin/picogen/" ]; then
-        PATH="${PATH}:${HOME}/bin/picogen"
+    PATH="${PATH}:${HOME}/bin/picogen"
 fi
 
 # set pico2040 env
