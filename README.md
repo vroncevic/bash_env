@@ -32,6 +32,9 @@ Navigate to the release **[page](https://github.com/vroncevic/bash_env/releases)
 To install **bash_env**, type the following
 
 ```bash
+tar xvzf bash_env-2.1.7.tar.gz
+cd bash_env-2.1.7
+
 # standard user
 cp user_defined_functions           /home/${USERNAME}/.user_defined_functions
 cp user_defined_str_functions       /home/${USERNAME}/.user_defined_str_functions
@@ -125,7 +128,7 @@ More documentation and information at
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2018 - 2024 by [vroncevic.github.io/bash_env](https://vroncevic.github.io/bash_env)
+Copyright (C) 2018 - 2026 by [vroncevic.github.io/bash_env](https://vroncevic.github.io/bash_env)
 
 **bash_env** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,

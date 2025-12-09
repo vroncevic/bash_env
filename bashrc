@@ -1,6 +1,6 @@
 #
 # @brief   Bash rc
-# @version ver.2.1.6
+# @version ver.2.1.7
 # @date    Sun Jun  2 05:44:08 PM CEST 2024
 # @company None, free software to use 2024
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
